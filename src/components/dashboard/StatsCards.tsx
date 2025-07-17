@@ -1,88 +1,92 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useApp } from '@/context/AppContext';
-import { Card } from '@/components/ui/Card';
-import { 
-  UserGroupIcon, 
-  ClockIcon, 
-  CheckCircleIcon, 
-  ArrowTrendingUpIcon 
-} from '@heroicons/react/24/outline';
+import React from "react";
+import { useApp } from "@/context/AppContext";
+import { Card } from "@/components/ui/Card";
+import {
+  UserGroupIcon,
+  ClockIcon,
+  CheckCircleIcon,
+  ArrowTrendingUpIcon,
+} from "@heroicons/react/24/outline";
 
 export function StatsCards() {
   const { patients } = useApp();
 
   // Calculate stats
-  const waitingPatients = patients.filter(p => p.status === 'waiting').length;
-  const inConsultationPatients = patients.filter(p => p.status === 'in-consultation').length;
-  const completedPatients = patients.filter(p => p.status === 'completed').length;
-  
+  const waitingPatients = patients.filter((p) => p.status === "waiting").length;
+  const inConsultationPatients = patients.filter(
+    (p) => p.status === "in-consultation",
+  ).length;
+  const completedPatients = patients.filter(
+    (p) => p.status === "completed",
+  ).length;
+
   // Average wait time calculation (mock data)
-  const averageWaitTime = '12 min';
+  const averageWaitTime = "12 min";
 
   const stats = [
     {
-      name: 'Pacientes en espera',
+      name: "Pacientes en espera",
       value: waitingPatients,
       icon: UserGroupIcon,
-      color: 'text-blue-600
-      bgColor: 'bg-blue-100
-      change: '+5%',
-      changeType: 'increase'
+      color: "text-blue-600",
+      bgColor: "bg-blue-100",
+      change: "+5%",
+      changeType: "increase",
     },
     {
-      name: 'Tiempo promedio de espera',
+      name: "Tiempo promedio de espera",
       value: averageWaitTime,
       icon: ClockIcon,
-      color: 'text-yellow-600
-      bgColor: 'bg-yellow-100
-      change: '-2 min',
-      changeType: 'decrease'
+      color: "text-yellow-600",
+      bgColor: "bg-yellow-100",
+      change: "-2 min",
+      changeType: "decrease",
     },
     {
-      name: 'Consultas en progreso',
+      name: "Consultas en progreso",
       value: inConsultationPatients,
       icon: ArrowTrendingUpIcon,
-      color: 'text-purple-600
-      bgColor: 'bg-purple-100
-      change: '+2',
-      changeType: 'increase'
+      color: "text-purple-600",
+      bgColor: "bg-purple-100",
+      change: "+2",
+      changeType: "increase",
     },
     {
-      name: 'Consultas completadas hoy',
+      name: "Consultas completadas hoy",
       value: completedPatients,
       icon: CheckCircleIcon,
-      color: 'text-green-600
-      bgColor: 'bg-green-100
-      change: '+12%',
-      changeType: 'increase'
-    }
+      color: "text-green-600",
+      bgColor: "bg-green-100",
+      change: "+12%",
+      changeType: "increase",
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (
-          <Card key={index} className="hover:shadow-md transition-shadow">
+          <Card key={index} className="transition-shadow hover:shadow-md">
             <div className="flex items-center">
-              <div className={`p-3 rounded-lg ${stat.bgColor}`}>
-                <IconComponent className={`w-6 h-6 ${stat.color}`} />
+              <div className={`rounded-lg p-3 ${stat.bgColor}`}>
+                <IconComponent className={`h-6 w-6 ${stat.color}`} />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600
-                  {stat.name}
-                </p>
+                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-semibold text-gray-900
+                  <p className="text-2xl font-semibold text-gray-900">
                     {stat.value}
                   </p>
-                  <p className={`ml-2 text-xs ${
-                    stat.changeType === 'increase' 
-                      ? 'text-green-600 
-                      : 'text-red-600
-                  }`}>
+                  <p
+                    className={`ml-2 text-xs ${
+                      stat.changeType === "increase"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
                     {stat.change}
                   </p>
                 </div>

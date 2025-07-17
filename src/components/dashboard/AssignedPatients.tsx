@@ -87,7 +87,7 @@ export function AssignedPatients() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <UserIcon className="h-5 w-5 text-green-600 />
+            <UserIcon className="h-5 w-5 text-green-600" />
             <span>Mis Pacientes</span>
           </div>
           <Badge variant="success" size="sm">
@@ -100,10 +100,8 @@ export function AssignedPatients() {
         {assignedPatients.length === 0 ? (
           <div className="py-8 text-center">
             <UserIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
-            <p className="text-gray-600
-              No tienes pacientes asignados
-            </p>
-            <p className="mt-1 text-sm text-gray-500
+            <p className="text-gray-600">No tienes pacientes asignados</p>
+            <p className="mt-1 text-sm text-gray-500">
               Asígnate pacientes de la cola para comenzar
             </p>
           </div>
@@ -111,13 +109,13 @@ export function AssignedPatients() {
           assignedPatients.map((patient) => (
             <div
               key={patient.id}
-              className="rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md
+              className="rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-3">
                   {/* Patient avatar */}
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200
-                    <span className="text-sm font-medium text-gray-600
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">
+                    <span className="text-sm font-medium text-gray-600">
                       {patient.name
                         .split(" ")
                         .map((n) => n[0])
@@ -127,7 +125,7 @@ export function AssignedPatients() {
 
                   <div className="flex-1">
                     <div className="flex items-center space-x-2">
-                      <h4 className="font-medium text-gray-900
+                      <h4 className="font-medium text-gray-900">
                         {patient.name}
                       </h4>
                       <Badge variant={getStatusColor(patient.status)} size="sm">
@@ -135,19 +133,19 @@ export function AssignedPatients() {
                       </Badge>
                     </div>
 
-                    <p className="mt-1 text-sm text-gray-600
+                    <p className="mt-1 text-sm text-gray-600">
                       {patient.age} años • {patient.consultation}
                     </p>
 
                     {patient.status === "assigned" && (
-                      <div className="mt-2 flex items-center space-x-1 text-xs text-gray-500
+                      <div className="mt-2 flex items-center space-x-1 text-xs text-gray-500">
                         <ClockIcon className="h-4 w-4" />
                         <span>Esperando consulta</span>
                       </div>
                     )}
 
                     {patient.status === "in-consultation" && (
-                      <div className="mt-2 flex items-center space-x-1 text-xs text-green-600
+                      <div className="mt-2 flex items-center space-x-1 text-xs text-green-600">
                         <VideoCameraIcon className="h-4 w-4" />
                         <span>En consulta activa</span>
                       </div>
@@ -207,8 +205,8 @@ export function AssignedPatients() {
       </div>
 
       {assignedPatients.length > 0 && (
-        <div className="mt-4 border-t border-gray-200 pt-4
-          <p className="text-center text-xs text-gray-500
+        <div className="mt-4 border-t border-gray-200 pt-4">
+          <p className="text-center text-xs text-gray-500">
             Gestiona tus consultas asignadas desde aquí
           </p>
         </div>

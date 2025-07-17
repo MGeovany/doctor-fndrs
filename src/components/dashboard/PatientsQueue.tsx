@@ -58,7 +58,7 @@ export function PatientsQueue() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <UserIcon className="h-5 w-5 text-blue-600 />
+            <UserIcon className="h-5 w-5 text-blue-600" />
             <span>Pacientes en Cola</span>
           </div>
           <Badge variant="info" size="sm">
@@ -71,10 +71,8 @@ export function PatientsQueue() {
         {waitingPatients.length === 0 ? (
           <div className="py-8 text-center">
             <UserIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
-            <p className="text-gray-600
-              No hay pacientes en espera
-            </p>
-            <p className="mt-1 text-sm text-gray-500
+            <p className="text-gray-600">No hay pacientes en espera</p>
+            <p className="mt-1 text-sm text-gray-500">
               Los nuevos pacientes aparecerán aquí
             </p>
           </div>
@@ -82,13 +80,13 @@ export function PatientsQueue() {
           waitingPatients.map((patient) => (
             <div
               key={patient.id}
-              className="rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md
+              className="rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-3">
                   {/* Patient avatar */}
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200
-                    <span className="text-sm font-medium text-gray-600
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">
+                    <span className="text-sm font-medium text-gray-600">
                       {patient.name
                         .split(" ")
                         .map((n) => n[0])
@@ -98,7 +96,7 @@ export function PatientsQueue() {
 
                   <div className="flex-1">
                     <div className="flex items-center space-x-2">
-                      <h4 className="font-medium text-gray-900
+                      <h4 className="font-medium text-gray-900">
                         {patient.name}
                       </h4>
                       <Badge
@@ -150,8 +148,8 @@ export function PatientsQueue() {
       </div>
 
       {waitingPatients.length > 0 && (
-        <div className="mt-4 border-t border-gray-200 pt-4
-          <p className="text-center text-xs text-gray-500
+        <div className="mt-4 border-t border-gray-200 pt-4">
+          <p className="text-center text-xs text-gray-500">
             Los pacientes se ordenan por prioridad y tiempo de espera
           </p>
         </div>

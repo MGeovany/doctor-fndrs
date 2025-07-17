@@ -62,32 +62,21 @@ export default function DoctorLoginPage() {
         </div>
 
         {/* Demo credentials info */}
-        <Card className="border-blue-200 bg-blue-50">
-          <div className="space-y-3 text-center">
-            <h3 className="text-sm font-medium text-blue-900">
-              🔍 Credenciales de prueba
-            </h3>
-            <p className="text-sm text-blue-700">
-              Puedes iniciar sesión con las siguientes credenciales para probar
-              el dashboard:
-            </p>
-            <div className="rounded-lg bg-white p-3 font-mono text-sm">
-              <div className="text-gray-600">
-                <span className="font-semibold text-blue-600">doctor</span>
-              </div>
-              <div className="text-gray-600">
-                <span className="font-semibold text-blue-600">doctor123</span>
-              </div>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={fillDemoCredentials}
-              className="border-blue-300 text-blue-600 hover:bg-blue-50"
-            >
-              Usar credenciales de prueba
-            </Button>
+        <Card className="flex flex-col items-center border-blue-200 bg-blue-50 py-8">
+          <p className="text-md mb-4 text-center">
+            Puedes iniciar sesión con las siguientes credenciales:
+          </p>
+          <div className="mb-6 flex flex-col items-center gap-2">
+            <span className="rounded-md bg-gray-200 px-4 py-1 font-mono text-sm font-bold">
+              doctor
+            </span>
+            <span className="rounded-md bg-gray-200 px-4 py-1 font-mono text-sm font-bold">
+              doctor123
+            </span>
           </div>
+          <Button variant="primary" size="sm" onClick={fillDemoCredentials}>
+            Usar credenciales de prueba
+          </Button>
         </Card>
 
         {/* Login form */}
