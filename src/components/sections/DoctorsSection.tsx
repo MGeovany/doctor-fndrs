@@ -107,7 +107,7 @@ export function DoctorsSection() {
     <section id="doctors" className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+          <h2 className="mb-4 text-6xl font-bold text-gray-900">
             Nuestros Doctores Destacados
           </h2>
           <p className="font-outfit mx-auto max-w-3xl text-xl text-gray-600">
