@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { DoctorsSection } from "@/components/sections/DoctorsSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
+import { StatsSection } from "@/components/sections/StatsSection";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
+        <StatsSection />
         <DoctorsSection />
         <BenefitsSection />
         <HowItWorksSection />

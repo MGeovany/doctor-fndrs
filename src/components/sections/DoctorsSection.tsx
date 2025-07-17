@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { mockDoctors } from "@/data/mockData";
-import { Star, Search, Filter } from "lucide-react";
+import { Star, Search, Filter, User } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Image from "next/image";
+import type { Doctor } from "@/types";
 
 export function DoctorsSection() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,14 +38,79 @@ export function DoctorsSection() {
     return matchesSearch && matchesSpecialty;
   });
 
+  // Helper DoctorCard component to allow hooks
+  function DoctorCard({ doctor }: { doctor: Doctor }) {
+    const [imgError, setImgError] = React.useState(false);
+    return (
+      <Card
+        key={doctor.id}
+        className="!hover:shadow-sm overflow-hidden !shadow-none transition-all duration-300"
+        padding="none"
+      >
+        <div className="relative">
+          {/* Doctor image banner */}
+          <div className="flex h-48 w-full items-center justify-center overflow-hidden bg-gray-200">
+            {doctor.image && !imgError ? (
+              <Image
+                src={doctor.image}
+                alt={doctor.name}
+                fill
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                }}
+                onError={() => setImgError(true)}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            ) : (
+              <User className="h-20 w-20 text-gray-400" />
+            )}
+          </div>
+          {/* Online status */}
+          {doctor.isOnline && (
+            <Badge variant="success" className="absolute top-4 right-4">
+              En línea
+            </Badge>
+          )}
+        </div>
+        <div className="p-6">
+          <div className="mb-2 flex items-start justify-between">
+            <div>
+              <h3 className="font-jakarta text-lg text-gray-900">
+                {doctor.name}
+              </h3>
+              <p className="font-outfit text-sm text-gray-600">
+                {doctor.specialty}
+              </p>
+            </div>
+            <div className="flex items-center rounded-md px-2 py-1">
+              <Star className="mr-1 h-4 w-4 fill-yellow-400 text-yellow-400" />
+              <span className="font-outfit text-sm text-gray-900">
+                {doctor.rating}
+              </span>
+            </div>
+          </div>
+          <div className="font-outfit mb-4 flex items-center space-x-2 text-sm text-gray-600">
+            <span>{doctor.experience} de experiencia</span>
+            <span>•</span>
+            <span>{doctor.patientsAttended}+ pacientes</span>
+          </div>
+          <Button className="w-full">Consultar ahora</Button>
+        </div>
+      </Card>
+    );
+  }
+
   return (
-    <section id="doctors" className="bg-white py-20">
+    <section id="doctors" className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900">
             Nuestros Doctores Destacados
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="font-outfit mx-auto max-w-3xl text-xl text-gray-600">
             Contamos con un equipo de profesionales altamente calificados y
             listos para atenderte.
           </p>
@@ -57,7 +124,7 @@ export function DoctorsSection() {
             </div>
             <input
               type="text"
-              className="block w-full rounded-md border border-gray-300 bg-white py-2 pr-3 pl-10 leading-5 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 focus:outline-none sm:text-sm"
+              className="font-outfit block w-full rounded-md border border-gray-300 bg-white py-2 pr-3 pl-10 leading-5 text-gray-900 placeholder-gray-500 focus:outline-none sm:text-sm"
               placeholder="Buscar por nombre o especialidad..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -73,7 +140,7 @@ export function DoctorsSection() {
                 setSelectedSpecialty(value === "all" ? null : value)
               }
             >
-              <SelectTrigger className="w-[220px]">
+              <SelectTrigger className="font-outfit w-[220px]">
                 <SelectValue placeholder="Todas las especialidades" />
               </SelectTrigger>
               <SelectContent>
@@ -91,53 +158,7 @@ export function DoctorsSection() {
         {/* Doctors grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredDoctors.map((doctor) => (
-            <Card
-              key={doctor.id}
-              className="overflow-hidden transition-transform hover:scale-105"
-            >
-              <div className="relative">
-                {/* Doctor image banner */}
-                <div className="h-48 w-full overflow-hidden bg-gray-200">
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-
-                {/* Online status */}
-                {doctor.isOnline && (
-                  <Badge variant="success" className="absolute top-4 right-4">
-                    En línea
-                  </Badge>
-                )}
-              </div>
-
-              <div className="p-6">
-                <div className="mb-2 flex items-start justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {doctor.name}
-                    </h3>
-                    <p className="text-sm text-gray-600">{doctor.specialty}</p>
-                  </div>
-                  <div className="flex items-center rounded-md px-2 py-1">
-                    <Star className="mr-1 h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium text-gray-900">
-                      {doctor.rating}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mb-4 flex items-center space-x-2 text-sm text-gray-600">
-                  <span>{doctor.experience} de experiencia</span>
-                  <span>•</span>
-                  <span>{doctor.patientsAttended}+ pacientes</span>
-                </div>
-
-                <Button className="w-full">Consultar ahora</Button>
-              </div>
-            </Card>
+            <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
 
