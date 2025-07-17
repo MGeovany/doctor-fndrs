@@ -22,11 +22,11 @@ export function Button({
 
   const variants = {
     primary: "bg-black hover:bg-black/80 text-white focus:ring-0 outline-0",
-    secondary: "bg-gray-600 hover:bg-gray-700 text-white focus:ring-gray-500",
+    secondary: "bg-white hover:bg-white/80 text-black focus:ring-0 outline-0",
     outline:
-      "border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 focus:ring-0 outline-0",
+      "border border-gray-300 bg-transparent text-black focus:ring-0 outline-0",
     ghost: "hover:bg-gray-100 text-gray-700 focus:ring-gray-500",
-    danger: "bg-red-600 hover:bg-red-700 text-white focus:ring-red-500",
+    danger: "bg-red-600 hover:bg-red-700  text-white focus:ring-red-500",
   };
 
   const sizes = {

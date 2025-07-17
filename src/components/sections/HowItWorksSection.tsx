@@ -129,12 +129,12 @@ export function HowItWorksSection() {
         </div>
 
         {/* Doctor CTA section */}
-        <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-center text-white lg:p-12">
+        <div className="rounded-2xl bg-blue-600 p-8 text-center text-white lg:p-12">
           <div className="mx-auto max-w-3xl space-y-6">
             <h3 className="text-2xl font-bold lg:text-3xl">
               ¿Eres doctor y quieres unirte a nuestra plataforma?
             </h3>
-            <p className="text-lg text-blue-100">
+            <p className="font-outfit text-lg text-blue-100">
               Únete a cientos de profesionales que ya están atendiendo pacientes
               en Dctrs. Flexibilidad horaria, buenos ingresos y tecnología de
               vanguardia.
@@ -142,33 +142,29 @@ export function HowItWorksSection() {
 
             <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="text-center">
-                <div className="text-2xl font-bold">$50-100</div>
-                <div className="text-sm text-blue-100">Por consulta</div>
+                <div className="font-sans text-4xl">$50-100</div>
+                <div className="text-md text-blue-100">Por consulta</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">Flexible</div>
-                <div className="text-sm text-blue-100">Horarios</div>
+                <div className="font-sans text-4xl">Flexible</div>
+                <div className="text-md text-blue-100">Horarios</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">24/7</div>
-                <div className="text-sm text-blue-100">Soporte técnico</div>
+                <div className="font-sans text-4xl">24/7</div>
+                <div className="text-md text-blue-100">Soporte técnico</div>
               </div>
             </div>
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link href="/doctor-login">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="bg-white text-blue-600 hover:bg-gray-100"
-                >
+                <Button variant="secondary" size="lg">
                   Acceder como Doctor
                 </Button>
               </Link>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-blue-600"
+                className="text-white !shadow-none"
               >
                 Más información
               </Button>
