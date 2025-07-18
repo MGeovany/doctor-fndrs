@@ -46,7 +46,7 @@ export function DashboardSidebar() {
                       isActive
                         ? "border-r-2 border-blue-600 bg-blue-50 text-blue-700"
                         : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                      "group flex items-center rounded-l-md px-3 py-2 text-sm font-medium transition-colors",
+                      "group font-jakarta flex items-center rounded-l-md px-3 py-2 text-sm transition-colors",
                     )}
                   >
                     <item.icon
@@ -54,7 +54,7 @@ export function DashboardSidebar() {
                         isActive
                           ? "text-blue-500"
                           : "text-gray-400 group-hover:text-gray-500",
-                        "mr-3 h-6 w-6 flex-shrink-0 transition-colors",
+                        "font-jakarta mr-3 h-6 w-6 flex-shrink-0 transition-colors",
                       )}
                       aria-hidden="true"
                     />
