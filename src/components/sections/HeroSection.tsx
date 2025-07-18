@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Play, Check, Star } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function HeroSection() {
   const [showModal, setShowModal] = useState(false);
@@ -11,6 +12,8 @@ export function HeroSection() {
   const handleConsultationClick = () => {
     setShowModal(true);
   };
+
+  const router = useRouter();
 
   return (
     <>
@@ -61,9 +64,7 @@ export function HeroSection() {
 
               {/* CTA buttons */}
               <div className="gsap-scale-in flex flex-col gap-3 sm:flex-row sm:gap-4">
-                <Button size="md" onClick={handleConsultationClick}>
-                  Haz tu consulta ahora
-                </Button>
+                <Button size="md">Haz tu consulta ahora</Button>
                 <Button variant="outline" size="md">
                   <Play className="mr-2 h-5 w-5" />
                   Ver cómo funciona
@@ -148,18 +149,25 @@ export function HeroSection() {
 
       {/* Modal for consultation info */}
       {showModal && (
-        <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-gray-200 p-4">
-          <div className="w-full max-w-md rounded-lg border border-gray-300 bg-white p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              ¡Próximamente disponible!
-            </h3>
-            <p className="mb-6 text-gray-600">
-              Estamos trabajando en el sistema de pagos y consultas. Pronto
-              podrás realizar consultas médicas online con nuestros doctores
-              certificados.
-            </p>
-            <div className="flex justify-end">
-              <Button onClick={() => setShowModal(false)}>Entendido</Button>
+        <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-gray-200 p-0 sm:p-4">
+          <div className="flex h-full w-full max-w-md flex-col items-center justify-center gap-6 overflow-y-auto rounded-none border border-gray-300 bg-white px-4 py-8 shadow-lg sm:h-auto sm:max-w-md sm:rounded-lg sm:p-6">
+            <div className="flex w-full flex-1 flex-col justify-center">
+              <h3 className="mb-4 text-center text-lg font-semibold text-gray-900">
+                ¡Próximamente disponible!
+              </h3>
+              <p className="mb-6 text-center text-gray-600">
+                Estamos trabajando en el sistema de pagos y consultas. Pronto
+                podrás realizar consultas médicas online con nuestros doctores
+                certificados.
+              </p>
+            </div>
+            <div className="flex w-full justify-center">
+              <Button
+                onClick={() => router.push("/dashboard")}
+                className="w-full max-w-xs"
+              >
+                Ir al dashboard
+              </Button>
             </div>
           </div>
         </div>
