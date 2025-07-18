@@ -72,7 +72,7 @@ export function HeroSection() {
             </div>
 
             {/* Right content - Hero image/illustration */}
-            <div className="relative mt-8 flex h-[700px] items-end justify-center lg:absolute lg:right-0 lg:bottom-0 lg:mt-0 lg:block lg:items-end">
+            <div className="relative mt-8 flex h-[350px] items-center justify-center sm:h-[700px] lg:absolute lg:right-0 lg:bottom-0 lg:mt-0 lg:block lg:items-end">
               <Image
                 src="/imgs/drs.png"
                 alt="Doctores principales"

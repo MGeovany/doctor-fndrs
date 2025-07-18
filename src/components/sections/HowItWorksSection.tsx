@@ -174,13 +174,17 @@ export function HowItWorksSection() {
 
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link href="/doctor-login">
-                <Button variant="secondary" size="lg">
+                <Button
+                  variant="secondary"
+                  size="md"
+                  className="w-full !shadow-none"
+                >
                   Acceder como Doctor
                 </Button>
               </Link>
               <Button
                 variant="outline"
-                size="lg"
+                size="md"
                 className="text-white !shadow-none"
               >
                 Más información

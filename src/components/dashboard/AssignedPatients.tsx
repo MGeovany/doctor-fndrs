@@ -5,7 +5,7 @@ import { useApp } from "@/context/AppContext";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { useToast } from "@/components/ui/Toast";
+import { toast } from "sonner";
 import { User, Video, CheckCircle, Clock, FileText } from "lucide-react";
 
 export function AssignedPatients() {
@@ -16,7 +16,6 @@ export function AssignedPatients() {
     completeConsultation,
     updatePatientStatus,
   } = useApp();
-  const { showToast } = useToast();
   const [consultingPatient, setConsultingPatient] = useState<string | null>(
     null,
   );
@@ -35,7 +34,7 @@ export function AssignedPatients() {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     startConsultation(patientId);
-    showToast("Consulta iniciada exitosamente", "success");
+    toast.success("Consulta iniciada exitosamente");
     setConsultingPatient(null);
   };
 
@@ -46,7 +45,7 @@ export function AssignedPatients() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     completeConsultation(patientId, "Consulta completada exitosamente");
-    showToast("Consulta finalizada exitosamente", "success");
+    toast.success("Consulta finalizada exitosamente");
     setCompletingPatient(null);
   };
 

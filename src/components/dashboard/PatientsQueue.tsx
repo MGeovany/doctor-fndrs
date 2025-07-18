@@ -5,12 +5,11 @@ import { useApp } from "@/context/AppContext";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { useToast } from "@/components/ui/Toast";
+import { toast } from "sonner";
 import { Clock, User, Phone, AlertTriangle } from "lucide-react";
 
 export function PatientsQueue() {
   const { patients, assignPatient, currentDoctor } = useApp();
-  const { showToast } = useToast();
   const [assigningPatient, setAssigningPatient] = useState<string | null>(null);
 
   const waitingPatients = patients.filter((p) => p.status === "waiting");
@@ -24,7 +23,7 @@ export function PatientsQueue() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     assignPatient(patientId, currentDoctor.id);
-    showToast("Paciente asignado exitosamente", "success");
+    toast.success("Paciente asignado exitosamente");
     setAssigningPatient(null);
   };
 

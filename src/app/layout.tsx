@@ -2,7 +2,8 @@ import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 import { AppProvider } from "@/context/AppContext";
-import { ToastProvider } from "@/components/ui/Toast";
+import { Toaster } from "@/components/ui/sonner";
+
 import { GSAPProvider } from "@/components/ui/GSAPProvider";
 import localFont from "next/font/local";
 
@@ -112,7 +113,18 @@ export default function RootLayout({
       <body className="min-h-screen bg-gray-50 font-sans">
         <AppProvider>
           <GSAPProvider>
-            <ToastProvider>{children}</ToastProvider>
+            <>
+              <Toaster
+                position="top-center"
+                className="font-outfit"
+                toastOptions={{
+                  style: {
+                    fontFamily: "var(--font-outfit)",
+                  },
+                }}
+              />
+              {children}
+            </>
           </GSAPProvider>
         </AppProvider>
       </body>
