@@ -23,7 +23,9 @@ export function DashboardNavbar() {
               <span className="text-lg font-bold text-white">D</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Dctrs.</span>
-            <span className="ml-2 text-sm text-gray-500">Dashboard</span>
+            <span className="font-jakarta text-md ml-2 text-gray-500">
+              DASHBOARD
+            </span>
           </Link>
 
           {/* Right side actions */}

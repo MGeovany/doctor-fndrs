@@ -100,8 +100,10 @@ export function AssignedPatients() {
         {assignedPatients.length === 0 ? (
           <div className="py-8 text-center">
             <UserIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
-            <p className="text-gray-600">No tienes pacientes asignados</p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="font-outfit text-gray-600">
+              No tienes pacientes asignados
+            </p>
+            <p className="font-outfit mt-1 text-sm text-gray-500">
               Asígnate pacientes de la cola para comenzar
             </p>
           </div>
@@ -133,7 +135,7 @@ export function AssignedPatients() {
                       </Badge>
                     </div>
 
-                    <p className="mt-1 text-sm text-gray-600">
+                    <p className="font-outfit mt-1 text-sm text-gray-600">
                       {patient.age} años • {patient.consultation}
                     </p>
 

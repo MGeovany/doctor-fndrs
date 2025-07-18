@@ -109,7 +109,7 @@ export function PatientsQueue() {
                       </Badge>
                     </div>
 
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    <p className="font-outfit mt-1 text-sm text-gray-600 dark:text-gray-400">
                       {patient.age} años • {patient.consultation}
                     </p>
 

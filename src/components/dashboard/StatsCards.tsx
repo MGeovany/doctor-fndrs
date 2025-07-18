@@ -75,7 +75,7 @@ export function StatsCards() {
                 <IconComponent className={`h-6 w-6 ${stat.color}`} />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                <p className="font-outfit text-sm text-gray-600">{stat.name}</p>
                 <div className="flex items-baseline">
                   <p className="text-2xl font-semibold text-gray-900">
                     {stat.value}

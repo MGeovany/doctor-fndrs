@@ -62,13 +62,17 @@ export function DashboardHeader() {
               <div className="text-2xl font-bold text-blue-600">
                 <AnimatedCounter value={currentDoctor?.patientsAttended ?? 0} />
               </div>
-              <div className="text-xs text-gray-600">Pacientes atendidos</div>
+              <div className="font-outfit text-xs text-gray-600">
+                Pacientes atendidos
+              </div>
             </div>
             <div className="rounded-lg bg-green-50 p-3">
               <div className="text-2xl font-bold text-green-600">
                 {currentDoctor?.rating ?? 0}
               </div>
-              <div className="text-xs text-gray-600">Calificación promedio</div>
+              <div className="font-outfit text-xs text-gray-600">
+                Calificación promedio
+              </div>
             </div>
           </div>
         </div>
