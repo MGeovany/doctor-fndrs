@@ -1,111 +1,67 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useApp } from "@/context/AppContext";
 import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
-import gsap from "gsap";
 
 export function Navbar() {
   const { isAuthenticated, logout } = useApp();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  // Bloquea scroll en html y body cuando el menú esté abierto
+  // bloquear scroll detrás del menú móvil
   useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-
-    if (mobileMenuOpen) {
-      html.style.overflow = "hidden";
-      body.style.overflow = "hidden";
-    } else {
-      html.style.overflow = "";
-      body.style.overflow = "";
-    }
-
+    document.documentElement.style.overflow = mobileMenuOpen ? "hidden" : "";
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
     return () => {
-      html.style.overflow = "";
-      body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
-  // Fondo del nav al hacer scroll
+
+  // detectar scroll para el blur en desktop
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Cerrar menú si agranda pantalla
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768 && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [mobileMenuOpen]);
-
-  // GSAP: animar apertura/cierre
-  useEffect(() => {
-    const o = overlayRef.current!;
-    const m = menuRef.current!;
-
-    if (mobileMenuOpen) {
-      gsap.to(o, { autoAlpha: 1, duration: 0.3, ease: "power1.out" });
-      gsap.to(m, { x: "0%", duration: 0.5, ease: "power3.out" });
-    } else {
-      gsap.to(o, { autoAlpha: 0, duration: 0.3, ease: "power1.in" });
-      gsap.to(m, { x: "100%", duration: 0.5, ease: "power3.in" });
-    }
-  }, [mobileMenuOpen]);
-
   return (
-    <nav className={`fixed top-0 z-50 w-full transition-all duration-300`}>
+    <nav
+      className={`fixed top-0 right-0 left-0 z-50 w-full transition-all duration-300`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="z-50 flex items-center space-x-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
+            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-black">
               <span className="text-lg font-bold text-white">D</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Dctrs.</span>
           </Link>
 
           {/* Links desktop */}
-          <div className="hidden items-center space-x-8 lg:flex">
-            <Link
-              href="/#doctors"
-              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
-            >
-              Doctores
-              <div className="absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-            </Link>
-            <Link
-              href="/#benefits"
-              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
-            >
-              Beneficios
-              <div className="absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-            </Link>
-            <Link
-              href="/#how-it-works"
-              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
-            >
-              Cómo funciona
-              <div className="absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-            </Link>
+          <div className="hidden lg:flex lg:space-x-8">
+            {[
+              { href: "/#doctors", label: "Doctores" },
+              { href: "/#benefits", label: "Beneficios" },
+              { href: "/#how-it-works", label: "Cómo funciona" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
+              >
+                {link.label}
+                <span className="absolute top-full left-1/2 mt-1 block h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+              </Link>
+            ))}
           </div>
 
           {/* Acciones desktop */}
-          <div className="hidden items-center space-x-4 lg:flex">
+          <div className="hidden lg:flex lg:space-x-4">
             {isAuthenticated ? (
               <>
                 <Link href="/dashboard">
@@ -130,46 +86,43 @@ export function Navbar() {
           </div>
 
           {/* Botón mobile */}
-          <div className="flex lg:hidden">
-            <button
-              onClick={() => setMobileMenuOpen((o) => !o)}
-              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset"
-              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+          <button
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="z-50 inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset lg:hidden"
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Overlay */}
-      <div
-        ref={overlayRef}
-        className="pointer-events-none fixed inset-0 z-40 bg-black/40 backdrop-blur-md lg:hidden"
-        onClick={() => setMobileMenuOpen(false)}
-        style={{ visibility: "hidden", opacity: 0 }}
-      />
+      {/* Overlay móvil */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-200 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
-      {/* Menú móvil */}
+      {/* Menú móvil: sidebar desde la izquierda, ancho 16rem, altura 50vh */}
       <div
-        ref={menuRef}
-        id="mobile-menu"
-        className="fixed top-0 right-0 z-50 flex h-[50vh] w-full translate-x-[100%] transform flex-col rounded-b-lg bg-white shadow-2xl lg:hidden"
+        className={`fixed top-0 left-0 z-50 h-[50vh] w-full transform rounded-b-lg bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"} `}
         role="dialog"
         aria-modal="true"
       >
-        {/* Header */}
+        {/* Header móvil */}
         <div className="flex items-center justify-between px-6 py-4">
           <Link
             href="/"
             className="flex items-center space-x-2"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
+            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-black">
               <span className="text-lg font-bold text-white">D</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Dctrs.</span>
@@ -180,28 +133,28 @@ export function Navbar() {
           />
         </div>
 
-        {/* Contenido */}
+        {/* Contenido móvil */}
         <div className="flex flex-1 flex-col justify-between px-6 py-4">
-          <div className="flex flex-col gap-2">
-            {["doctors", "benefits", "how-it-works"].map((sec) => (
+          <div className="space-y-2">
+            {[
+              { href: "/#doctors", label: "Doctores" },
+              { href: "/#benefits", label: "Beneficios" },
+              { href: "/#how-it-works", label: "Cómo funciona" },
+            ].map((link) => (
               <Link
-                key={sec}
-                href={`/#${sec}`}
-                className="rounded px-1 py-2 text-lg font-bold text-gray-900 transition-colors hover:bg-gray-50"
+                key={link.href}
+                href={link.href}
+                className="block rounded px-1 py-2 text-lg font-bold text-gray-900 hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {sec === "doctors"
-                  ? "Doctores"
-                  : sec === "benefits"
-                    ? "Beneficios"
-                    : "Cómo funciona"}
+                {link.label}
               </Link>
             ))}
           </div>
 
           <div className="my-8" />
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2 space-y-4">
             {isAuthenticated ? (
               <>
                 <Link
@@ -209,7 +162,7 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Button
-                    variant="outline"
+                    variant="primary"
                     size="md"
                     className="w-full py-3 text-lg font-bold"
                   >
