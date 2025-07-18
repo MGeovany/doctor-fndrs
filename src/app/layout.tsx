@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { type Metadata } from "next";
 import { AppProvider } from "@/context/AppContext";
 import { ToastProvider } from "@/components/ui/Toast";
+import { GSAPProvider } from "@/components/ui/GSAPProvider";
 import localFont from "next/font/local";
 
 const calSans = localFont({
@@ -71,7 +72,9 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-gray-50 font-sans">
         <AppProvider>
-          <ToastProvider>{children}</ToastProvider>
+          <GSAPProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </GSAPProvider>
         </AppProvider>
       </body>
     </html>

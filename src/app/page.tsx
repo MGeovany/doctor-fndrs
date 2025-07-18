@@ -6,19 +6,22 @@ import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { DctrsFeatureSection } from "@/components/sections/DctrsFeatureSection";
+import { PageTransition } from "@/components/ui/PageTransition";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <StatsSection />
-        <DoctorsSection />
-        <DctrsFeatureSection />
-        <HowItWorksSection />
-      </main>
-      <Footer />
-    </div>
+    <PageTransition>
+      <div className="min-h-screen">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <StatsSection />
+          <DoctorsSection />
+          <DctrsFeatureSection />
+          <HowItWorksSection />
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }

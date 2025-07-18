@@ -27,7 +27,7 @@ export function HeroSection() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             {/* Left content */}
             <div className="space-y-8 pt-4">
-              <div className="space-y-4">
+              <div className="gsap-fade-in space-y-4">
                 <h1 className="font-cal text-4xl leading-tight font-extrabold text-gray-900 lg:text-7xl">
                   Consultas médicas{" "}
                   <span className="text-blue-600">rápidas y confiables</span>
@@ -40,7 +40,7 @@ export function HeroSection() {
               </div>
 
               {/* Features list */}
-              <div className="space-y-3">
+              <div className="gsap-slide-in-left space-y-3">
                 {[
                   "Doctores certificados y especializados",
                   "Consultas disponibles 24/7",
@@ -55,7 +55,7 @@ export function HeroSection() {
               </div>
 
               {/* CTA buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="gsap-scale-in flex flex-col gap-4 sm:flex-row">
                 <Button size="md" onClick={handleConsultationClick}>
                   Haz tu consulta ahora
                 </Button>
@@ -67,7 +67,7 @@ export function HeroSection() {
             </div>
 
             {/* Right content - Hero image/illustration */}
-            <div className="absolute right-0 bottom-0 min-h-[520px]">
+            <div className="gsap-slide-in-right absolute right-0 bottom-0 min-h-[520px]">
               <Image
                 src="/imgs/drs.png"
                 alt="Doctores principales"
@@ -77,7 +77,7 @@ export function HeroSection() {
                 priority
               />
               {/* Card review de usuario */}
-              <div className="absolute right-[35rem] bottom-[8rem] z-10 flex w-[200px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+              <div className="gsap-rotate-in absolute right-[35rem] bottom-[8rem] z-10 flex w-[200px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
                 <Image
                   src="/imgs/dra1.png"
                   alt="María González"
@@ -102,7 +102,7 @@ export function HeroSection() {
                 </div>
               </div>
               {/* Card review de doctor */}
-              <div className="absolute right-10 bottom-16 z-10 flex w-[400px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+              <div className="gsap-rotate-in absolute right-10 bottom-16 z-10 flex w-[400px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
                 <Image
                   src="/imgs/dr1.1.png"
                   alt="Josh"

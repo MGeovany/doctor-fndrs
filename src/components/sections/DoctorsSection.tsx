@@ -106,7 +106,7 @@ export function DoctorsSection() {
   return (
     <section id="doctors" className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+        <div className="gsap-fade-in mb-12 text-center">
           <h2 className="mb-4 text-6xl font-bold text-gray-900">
             Nuestros Doctores Destacados
           </h2>
@@ -117,7 +117,7 @@ export function DoctorsSection() {
         </div>
 
         {/* Search and filters */}
-        <div className="mb-8 flex flex-col gap-4 md:flex-row">
+        <div className="gsap-slide-in-left mb-8 flex flex-col gap-4 md:flex-row">
           <div className="relative flex-1">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Search className="h-5 w-5 text-gray-400" />
@@ -156,7 +156,7 @@ export function DoctorsSection() {
         </div>
 
         {/* Doctors grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gsap-scale-in grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredDoctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}

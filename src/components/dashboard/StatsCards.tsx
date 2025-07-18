@@ -3,12 +3,7 @@
 import React from "react";
 import { useApp } from "@/context/AppContext";
 import { Card } from "@/components/ui/Card";
-import {
-  UserGroupIcon,
-  ClockIcon,
-  CheckCircleIcon,
-  ArrowTrendingUpIcon,
-} from "@heroicons/react/24/outline";
+import { Users, Clock, CheckCircle, TrendingUp } from "lucide-react";
 
 export function StatsCards() {
   const { patients } = useApp();
@@ -29,7 +24,7 @@ export function StatsCards() {
     {
       name: "Pacientes en espera",
       value: waitingPatients,
-      icon: UserGroupIcon,
+      icon: Users,
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       change: "+5%",
@@ -38,7 +33,7 @@ export function StatsCards() {
     {
       name: "Tiempo promedio de espera",
       value: averageWaitTime,
-      icon: ClockIcon,
+      icon: Clock,
       color: "text-yellow-600",
       bgColor: "bg-yellow-100",
       change: "-2 min",
@@ -47,7 +42,7 @@ export function StatsCards() {
     {
       name: "Consultas en progreso",
       value: inConsultationPatients,
-      icon: ArrowTrendingUpIcon,
+      icon: TrendingUp,
       color: "text-purple-600",
       bgColor: "bg-purple-100",
       change: "+2",
@@ -56,7 +51,7 @@ export function StatsCards() {
     {
       name: "Consultas completadas hoy",
       value: completedPatients,
-      icon: CheckCircleIcon,
+      icon: CheckCircle,
       color: "text-green-600",
       bgColor: "bg-green-100",
       change: "+12%",
@@ -65,7 +60,7 @@ export function StatsCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div className="gsap-scale-in grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (

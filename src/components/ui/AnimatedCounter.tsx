@@ -1,53 +1,63 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 interface AnimatedCounterProps {
   value: number;
   className?: string;
+  duration?: number;
+  ease?: string;
+  delay?: number;
+  suffix?: string;
+  prefix?: string;
 }
 
-export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
-  const [displayValue, setDisplayValue] = useState(value);
-  const [isAnimating, setIsAnimating] = useState(false);
+export function AnimatedCounter({
+  value,
+  className = "",
+  duration = 2,
+  ease = "power2.out",
+  delay = 0,
+  suffix = "",
+  prefix = "",
+}: AnimatedCounterProps) {
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (value !== displayValue) {
-      setIsAnimating(true);
-      
-      // Animate the counter
-      const duration = 500;
-      const startValue = displayValue;
-      const endValue = value;
-      const startTime = Date.now();
+    if (!counterRef.current || hasAnimated.current) return;
 
-      const animate = () => {
-        const now = Date.now();
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function for smooth animation
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        
-        const currentValue = Math.round(startValue + (endValue - startValue) * easeOutQuart);
-        setDisplayValue(currentValue);
+    // Set initial value to 0
+    gsap.set(counterRef.current, { innerText: "0" });
 
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          setIsAnimating(false);
+    // Create the counter animation
+    gsap.to(counterRef.current, {
+      innerText: value,
+      duration,
+      ease,
+      delay,
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        if (counterRef.current) {
+          const currentValue = Math.round(
+            parseInt(counterRef.current.innerText) || 0,
+          );
+          counterRef.current.innerText = `${prefix}${currentValue}${suffix}`;
         }
-      };
-
-      requestAnimationFrame(animate);
-    }
-  }, [value, displayValue]);
+      },
+      onComplete: function () {
+        hasAnimated.current = true;
+      },
+    });
+  }, [value, duration, ease, delay, prefix, suffix]);
 
   return (
-    <span 
-      className={`${className} ${isAnimating ? 'animate-pulse' : ''} transition-all duration-300`}
+    <span
+      ref={counterRef}
+      className={`${className} transition-all duration-300`}
     >
-      {displayValue}
+      {prefix}0{suffix}
     </span>
   );
 }

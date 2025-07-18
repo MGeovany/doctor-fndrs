@@ -5,26 +5,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import {
-  HomeIcon,
-  UserGroupIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  DocumentTextIcon,
-  Cog6ToothIcon,
-  QuestionMarkCircleIcon,
-} from "@heroicons/react/24/outline";
+  Home,
+  Users,
+  Calendar,
+  BarChart3,
+  FileText,
+  Settings,
+  HelpCircle,
+} from "lucide-react";
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
-  { name: "Pacientes", href: "/dashboard/patients", icon: UserGroupIcon },
-  { name: "Calendario", href: "/dashboard/calendar", icon: CalendarIcon },
-  { name: "Estadísticas", href: "/dashboard/stats", icon: ChartBarIcon },
-  { name: "Historial", href: "/dashboard/history", icon: DocumentTextIcon },
+  { name: "Dashboard", href: "/dashboard", icon: Home },
+  { name: "Pacientes", href: "/dashboard/patients", icon: Users },
+  { name: "Calendario", href: "/dashboard/calendar", icon: Calendar },
+  { name: "Estadísticas", href: "/dashboard/stats", icon: BarChart3 },
+  { name: "Historial", href: "/dashboard/history", icon: FileText },
 ];
 
 const secondaryNavigation = [
-  { name: "Configuración", href: "/dashboard/settings", icon: Cog6ToothIcon },
-  { name: "Ayuda", href: "/dashboard/help", icon: QuestionMarkCircleIcon },
+  { name: "Configuración", href: "/dashboard/settings", icon: Settings },
+  { name: "Ayuda", href: "/dashboard/help", icon: HelpCircle },
 ];
 
 export function DashboardSidebar() {
@@ -35,7 +35,7 @@ export function DashboardSidebar() {
       <div className="flex w-64 flex-col">
         <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-4 pb-4">
           <div className="flex flex-grow flex-col">
-            <nav className="flex-1 space-y-1 px-4">
+            <nav className="flex-1 space-y-4 px-4">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -54,7 +54,7 @@ export function DashboardSidebar() {
                         isActive
                           ? "text-blue-500"
                           : "text-gray-400 group-hover:text-gray-500",
-                        "font-jakarta mr-3 h-6 w-6 flex-shrink-0 transition-colors",
+                        "font-jakarta mr-3 h-4 w-4 flex-shrink-0 transition-colors",
                       )}
                       aria-hidden="true"
                     />

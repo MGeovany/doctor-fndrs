@@ -1,52 +1,53 @@
 import React from "react";
 import { Card } from "@/components/ui/Card";
+import { StatsCounter } from "@/components/ui/StatsCounter";
 import {
-  ClockIcon,
-  ShieldCheckIcon,
-  CurrencyDollarIcon,
-  DevicePhoneMobileIcon,
-  UserGroupIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/24/outline";
+  Clock,
+  Shield,
+  DollarSign,
+  Smartphone,
+  Users,
+  FileText,
+} from "lucide-react";
 
 const benefits = [
   {
-    icon: ClockIcon,
+    icon: Clock,
     title: "Disponibilidad 24/7",
     description:
       "Accede a consultas médicas en cualquier momento del día, todos los días del año.",
     color: "text-blue-600",
   },
   {
-    icon: ShieldCheckIcon,
+    icon: Shield,
     title: "Doctores Certificados",
     description:
       "Todos nuestros profesionales están certificados y cuentan con amplia experiencia.",
     color: "text-green-600",
   },
   {
-    icon: CurrencyDollarIcon,
+    icon: DollarSign,
     title: "Precios Accesibles",
     description:
       "Consultas médicas a precios justos con planes de suscripción flexibles.",
     color: "text-yellow-600",
   },
   {
-    icon: DevicePhoneMobileIcon,
+    icon: Smartphone,
     title: "Desde Cualquier Dispositivo",
     description:
       "Realiza consultas desde tu computadora, tablet o teléfono móvil.",
     color: "text-purple-600",
   },
   {
-    icon: UserGroupIcon,
+    icon: Users,
     title: "Atención Personalizada",
     description:
       "Cada consulta es personalizada según tus necesidades específicas de salud.",
     color: "text-red-600",
   },
   {
-    icon: DocumentTextIcon,
+    icon: FileText,
     title: "Historial Médico Digital",
     description:
       "Mantén un registro completo y seguro de todas tus consultas y tratamientos.",
@@ -58,7 +59,7 @@ export function BenefitsSection() {
   return (
     <section id="benefits" className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
+        <div className="gsap-fade-in mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900">
             ¿Por qué elegir Dctrs.?
           </h2>
@@ -68,7 +69,7 @@ export function BenefitsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gsap-scale-in grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
@@ -95,7 +96,7 @@ export function BenefitsSection() {
         </div>
 
         {/* Additional benefits section */}
-        <div className="mt-16 rounded-2xl bg-white p-8 lg:p-12">
+        <div className="gsap-slide-in-right mt-16 rounded-2xl bg-white p-8 lg:p-12">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-gray-900">
@@ -133,12 +134,20 @@ export function BenefitsSection() {
 
             <div className="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 text-center">
               <div className="space-y-4">
-                <h4 className="text-3xl font-bold text-gray-900">
-                  $29.99
-                  <span className="text-lg font-normal text-gray-600">
+                <div className="flex items-baseline justify-center">
+                  <StatsCounter
+                    value={29}
+                    prefix="$"
+                    suffix=".99"
+                    duration={2}
+                    delay={0.3}
+                    textSize="text-3xl"
+                    textColor="text-gray-900"
+                  />
+                  <span className="ml-1 text-lg font-normal text-gray-600">
                     /mes
                   </span>
-                </h4>
+                </div>
                 <p className="text-gray-600">Cancela en cualquier momento</p>
                 <button className="w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700">
                   Comenzar prueba gratuita

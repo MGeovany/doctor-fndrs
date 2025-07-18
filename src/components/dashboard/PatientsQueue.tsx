@@ -6,12 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { useToast } from "@/components/ui/Toast";
-import {
-  ClockIcon,
-  UserIcon,
-  PhoneIcon,
-  ExclamationTriangleIcon,
-} from "@heroicons/react/24/outline";
+import { Clock, User, Phone, AlertTriangle } from "lucide-react";
 
 export function PatientsQueue() {
   const { patients, assignPatient, currentDoctor } = useApp();
@@ -48,17 +43,17 @@ export function PatientsQueue() {
 
   const getPriorityIcon = (priority: string) => {
     if (priority === "high") {
-      return <ExclamationTriangleIcon className="h-4 w-4" />;
+      return <AlertTriangle className="h-4 w-4" />;
     }
     return null;
   };
 
   return (
-    <Card className="h-fit">
+    <Card className="gsap-slide-in-left h-fit">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <UserIcon className="h-5 w-5 text-blue-600" />
+            <User className="h-5 w-5 text-blue-600" />
             <span>Pacientes en Cola</span>
           </div>
           <Badge variant="info" size="sm">
@@ -70,7 +65,7 @@ export function PatientsQueue() {
       <div className="space-y-4">
         {waitingPatients.length === 0 ? (
           <div className="py-8 text-center">
-            <UserIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
+            <User className="mx-auto mb-4 h-12 w-12 text-gray-400" />
             <p className="text-gray-600">No hay pacientes en espera</p>
             <p className="mt-1 text-sm text-gray-500">
               Los nuevos pacientes aparecerán aquí
@@ -114,7 +109,7 @@ export function PatientsQueue() {
                     </p>
 
                     <div className="mt-2 flex items-center space-x-1 text-xs text-gray-500 dark:text-gray-400">
-                      <ClockIcon className="h-4 w-4" />
+                      <Clock className="h-4 w-4" />
                       <span>Esperando {patient.waitTime}</span>
                     </div>
                   </div>
@@ -137,7 +132,7 @@ export function PatientsQueue() {
                     size="sm"
                     className="flex min-w-[100px] items-center justify-center space-x-1"
                   >
-                    <PhoneIcon className="h-4 w-4" />
+                    <Phone className="h-4 w-4" />
                     <span>Llamar</span>
                   </Button>
                 </div>

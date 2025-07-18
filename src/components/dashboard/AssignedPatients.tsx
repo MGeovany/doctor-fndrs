@@ -6,13 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { useToast } from "@/components/ui/Toast";
-import {
-  UserIcon,
-  VideoCameraIcon,
-  CheckCircleIcon,
-  ClockIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/24/outline";
+import { User, Video, CheckCircle, Clock, FileText } from "lucide-react";
 
 export function AssignedPatients() {
   const {
@@ -83,11 +77,11 @@ export function AssignedPatients() {
   };
 
   return (
-    <Card className="h-fit">
+    <Card className="gsap-slide-in-right h-fit">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <UserIcon className="h-5 w-5 text-green-600" />
+            <User className="h-5 w-5 text-green-600" />
             <span>Mis Pacientes</span>
           </div>
           <Badge variant="success" size="sm">
@@ -99,7 +93,7 @@ export function AssignedPatients() {
       <div className="space-y-4">
         {assignedPatients.length === 0 ? (
           <div className="py-8 text-center">
-            <UserIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
+            <User className="mx-auto mb-4 h-12 w-12 text-gray-400" />
             <p className="font-outfit text-gray-600">
               No tienes pacientes asignados
             </p>
@@ -141,14 +135,14 @@ export function AssignedPatients() {
 
                     {patient.status === "assigned" && (
                       <div className="mt-2 flex items-center space-x-1 text-xs text-gray-500">
-                        <ClockIcon className="h-4 w-4" />
+                        <Clock className="h-4 w-4" />
                         <span>Esperando consulta</span>
                       </div>
                     )}
 
                     {patient.status === "in-consultation" && (
                       <div className="mt-2 flex items-center space-x-1 text-xs text-green-600">
-                        <VideoCameraIcon className="h-4 w-4" />
+                        <Video className="h-4 w-4" />
                         <span>En consulta activa</span>
                       </div>
                     )}
@@ -163,7 +157,7 @@ export function AssignedPatients() {
                       loading={consultingPatient === patient.id}
                       className="flex min-w-[120px] items-center justify-center space-x-1"
                     >
-                      <VideoCameraIcon className="h-4 w-4" />
+                      <Video className="h-4 w-4" />
                       <span>
                         {consultingPatient === patient.id
                           ? "Iniciando..."
@@ -180,7 +174,7 @@ export function AssignedPatients() {
                       loading={completingPatient === patient.id}
                       className="flex min-w-[120px] items-center justify-center space-x-1"
                     >
-                      <CheckCircleIcon className="h-4 w-4" />
+                      <CheckCircle className="h-4 w-4" />
                       <span>
                         {completingPatient === patient.id
                           ? "Finalizando..."
@@ -195,7 +189,7 @@ export function AssignedPatients() {
                       size="sm"
                       className="flex min-w-[120px] items-center justify-center space-x-1"
                     >
-                      <DocumentTextIcon className="h-4 w-4" />
+                      <FileText className="h-4 w-4" />
                       <span>Ver notas</span>
                     </Button>
                   )}
@@ -209,7 +203,7 @@ export function AssignedPatients() {
       {assignedPatients.length > 0 && (
         <div className="mt-4 border-t border-gray-200 pt-4">
           <p className="text-center text-xs text-gray-500">
-            Gestiona tus consultas asignadas desde aquí
+            Los pacientes se ordenan por estado y tiempo de asignación
           </p>
         </div>
       )}

@@ -4,11 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useApp } from "@/context/AppContext";
 import { Button } from "@/components/ui/Button";
-import {
-  BellIcon,
-  Cog6ToothIcon,
-  ArrowRightOnRectangleIcon,
-} from "@heroicons/react/24/outline";
+import { Bell, Settings, LogOut } from "lucide-react";
 
 export function DashboardNavbar() {
   const { logout, currentDoctor } = useApp();
@@ -32,13 +28,13 @@ export function DashboardNavbar() {
           <div className="flex items-center space-x-4">
             {/* Notifications */}
             <button className="relative p-2 text-gray-500 transition-colors hover:text-gray-700">
-              <BellIcon className="h-6 w-6" />
+              <Bell className="h-6 w-6" />
               <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
             </button>
 
             {/* Settings */}
             <button className="p-2 text-gray-500 transition-colors hover:text-gray-700">
-              <Cog6ToothIcon className="h-6 w-6" />
+              <Settings className="h-6 w-6" />
             </button>
 
             {/* Doctor info and logout */}
@@ -67,7 +63,7 @@ export function DashboardNavbar() {
                 onClick={logout}
                 className="text-gray-500 hover:text-red-600"
               >
-                <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                <LogOut className="h-5 w-5" />
               </Button>
             </div>
           </div>

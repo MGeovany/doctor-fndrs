@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { StatsCounter } from "@/components/ui/StatsCounter";
 import {
   UserPlus,
   CreditCard,
@@ -71,7 +72,7 @@ export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
+        <div className="gsap-fade-in mb-16 text-center">
           <h2 className="mb-4 text-6xl font-bold text-gray-900">
             ¿Cómo funciona Dctrs.?
           </h2>
@@ -82,7 +83,7 @@ export function HowItWorksSection() {
         </div>
 
         {/* Tabs */}
-        <div className="mb-12 flex justify-center">
+        <div className="gsap-scale-in mb-12 flex justify-center">
           <div className="flex rounded-lg bg-gray-100 p-1">
             <button
               className={`rounded-md px-6 py-2 font-medium transition-colors ${activeTab === "pacientes" ? "bg-white text-black" : "text-gray-600 hover:text-gray-900"}`}
@@ -101,7 +102,7 @@ export function HowItWorksSection() {
 
         {/* Steps flow */}
         <div className="mb-20">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="gsap-slide-in-left grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {(activeTab === "pacientes" ? patientSteps : doctorSteps).map(
               (step, index, arr) => {
                 return (
@@ -129,7 +130,7 @@ export function HowItWorksSection() {
         </div>
 
         {/* Doctor CTA section */}
-        <div className="rounded-2xl bg-blue-600 p-8 text-center text-white lg:p-12">
+        <div className="gsap-slide-in-right rounded-2xl bg-blue-600 p-8 text-center text-white lg:p-12">
           <div className="mx-auto max-w-3xl space-y-6">
             <h3 className="text-2xl font-bold lg:text-3xl">
               ¿Eres doctor y quieres unirte a nuestra plataforma?

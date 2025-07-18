@@ -25,7 +25,7 @@ export function DashboardHeader() {
   };
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-6">
+    <div className="gsap-fade-in rounded-lg border border-gray-200 bg-white p-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="flex items-center space-x-4">
           {/* Doctor avatar */}
@@ -56,7 +56,7 @@ export function DashboardHeader() {
         </div>
 
         {/* Doctor stats */}
-        <div className="mt-4 md:mt-0">
+        <div className="gsap-scale-in mt-4 md:mt-0">
           <div className="grid grid-cols-2 gap-4 text-center">
             <div className="rounded-lg bg-blue-50 p-3">
               <div className="text-2xl font-bold text-blue-600">
