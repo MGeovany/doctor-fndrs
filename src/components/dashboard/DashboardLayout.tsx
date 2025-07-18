@@ -12,9 +12,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-50">
       <DashboardNavbar onOpenSidebar={() => setSidebarOpen(true)} />
-      <div className="flex">
+      <div className="flex h-screen pt-16">
         {/* Sidebar overlay for mobile */}
         {sidebarOpen && (
           <div
@@ -26,15 +26,15 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
         {/* Sidebar */}
         <div
-          className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[85vw] transform border-r border-gray-200 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
+          className={`fixed top-0 left-0 z-50 h-full w-64 transform border-r border-gray-200 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:static lg:w-64 lg:translate-x-0 lg:shadow-none ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:flex-shrink-0`}
+          }`}
         >
           <DashboardSidebar onClose={() => setSidebarOpen(false)} />
         </div>
 
         {/* Main content */}
-        <main className="w-full flex-1 lg:ml-0">
+        <main className="flex-1 overflow-auto">
           <div className="p-4 sm:p-6 lg:p-8">{children}</div>
         </main>
       </div>
