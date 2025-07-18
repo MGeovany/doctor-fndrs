@@ -14,12 +14,12 @@ export function DashboardNavbar() {
   const { logout, currentDoctor } = useApp();
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white shadow-sm">
+    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
               <span className="text-lg font-bold text-white">D</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Dctrs.</span>
@@ -45,13 +45,13 @@ export function DashboardNavbar() {
                 <div className="text-sm font-medium text-gray-900">
                   {currentDoctor?.name}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="font-outfit text-xs text-gray-500">
                   {currentDoctor?.specialty}
                 </div>
               </div>
 
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                <span className="text-sm font-medium text-blue-600">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black">
+                <span className="text-xs text-white">
                   {currentDoctor?.name
                     .split(" ")
                     .map((n) => n[0])

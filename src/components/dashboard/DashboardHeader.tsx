@@ -25,11 +25,11 @@ export function DashboardHeader() {
   };
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+    <div className="rounded-lg border border-gray-200 bg-white p-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="flex items-center space-x-4">
           {/* Doctor avatar */}
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black">
             <span className="text-xl font-bold text-white">
               {currentDoctor?.name
                 .split(" ")
@@ -40,15 +40,15 @@ export function DashboardHeader() {
 
           {/* Doctor info */}
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="font-sans text-2xl text-gray-900">
               {getCurrentGreeting()}, {currentDoctor?.name}
             </h1>
-            <p className="text-gray-600">{getCurrentDate()}</p>
-            <div className="mt-1 flex items-center space-x-2">
+            <p className="font-outfit text-black/80">{getCurrentDate()}</p>
+            <div className="mt-2 flex items-center space-x-2">
               <Badge variant="success" size="sm">
                 En línea
               </Badge>
-              <span className="text-sm text-gray-500">
+              <span className="font-outfit text-sm text-gray-500">
                 {currentDoctor?.specialty}
               </span>
             </div>

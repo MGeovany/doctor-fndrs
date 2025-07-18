@@ -33,7 +33,7 @@ export function DashboardSidebar() {
   return (
     <div className="hidden lg:flex lg:flex-shrink-0">
       <div className="flex w-64 flex-col">
-        <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-16 pb-4">
+        <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-4 pb-4">
           <div className="flex flex-grow flex-col">
             <nav className="flex-1 space-y-1 px-4">
               {navigation.map((item) => {
