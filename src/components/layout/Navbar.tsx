@@ -8,10 +8,9 @@ import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const { isAuthenticated, logout } = useApp();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // bloquear scroll detrás del menú móvil
+  // Bloquear scroll del fondo cuando el menú móvil está abierto
   useEffect(() => {
     document.documentElement.style.overflow = mobileMenuOpen ? "hidden" : "";
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -21,22 +20,19 @@ export function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // detectar scroll para el blur en desktop
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const links = [
+    { href: "/#doctors", label: "Doctores" },
+    { href: "/#benefits", label: "Beneficios" },
+    { href: "/#how-it-works", label: "Cómo funciona" },
+  ];
 
   return (
-    <nav
-      className={`fixed top-0 right-0 left-0 z-50 w-full transition-all duration-300`}
-    >
+    <nav className="fixed top-0 right-0 left-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="z-50 flex items-center space-x-2">
-            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-black">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
               <span className="text-lg font-bold text-white">D</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Dctrs.</span>
@@ -44,18 +40,13 @@ export function Navbar() {
 
           {/* Links desktop */}
           <div className="hidden lg:flex lg:space-x-8">
-            {[
-              { href: "/#doctors", label: "Doctores" },
-              { href: "/#benefits", label: "Beneficios" },
-              { href: "/#how-it-works", label: "Cómo funciona" },
-            ].map((link) => (
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
+                className="font-outfit text-gray-700 transition-colors hover:text-blue-600"
               >
                 {link.label}
-                <span className="absolute top-full left-1/2 mt-1 block h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               </Link>
             ))}
           </div>
@@ -103,48 +94,46 @@ export function Navbar() {
       {/* Overlay móvil */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-200 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
           onClick={() => setMobileMenuOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Menú móvil: sidebar desde la izquierda, ancho 16rem, altura 50vh */}
+      {/* Menú móvil full-screen */}
       <div
-        className={`fixed top-0 left-0 z-50 h-[50vh] w-full transform rounded-b-lg bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"} `}
+        className={`fixed inset-0 z-50 transform bg-white transition-transform duration-300 ease-in-out lg:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         role="dialog"
         aria-modal="true"
       >
-        {/* Header móvil */}
-        <div className="flex items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="flex items-center space-x-2"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-black">
-              <span className="text-lg font-bold text-white">D</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">Dctrs.</span>
-          </Link>
-          <X
-            className="h-5 w-5 cursor-pointer"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-        </div>
+        <div className="flex h-screen flex-col">
+          {/* Header móvil */}
+          <div className="flex items-center justify-between border-b px-6 py-4">
+            <Link
+              href="/"
+              className="flex items-center space-x-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
+                <span className="text-lg font-bold text-white">D</span>
+              </div>
+              <span className="text-xl font-bold text-gray-900">Dctrs.</span>
+            </Link>
+            <X
+              className="h-6 w-6 cursor-pointer text-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+          </div>
 
-        {/* Contenido móvil */}
-        <div className="flex flex-1 flex-col justify-between px-6 py-4">
-          <div className="space-y-2">
-            {[
-              { href: "/#doctors", label: "Doctores" },
-              { href: "/#benefits", label: "Beneficios" },
-              { href: "/#how-it-works", label: "Cómo funciona" },
-            ].map((link) => (
+          {/* Links móviles */}
+          <div className="space-y-4 overflow-auto px-6 py-8">
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block rounded px-1 py-2 text-lg font-bold text-gray-900 hover:bg-gray-50"
+                className="block rounded px-2 py-2 text-lg font-bold text-gray-900 hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -152,9 +141,8 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="my-8" />
-
-          <div className="flex flex-col gap-2 space-y-4">
+          {/* Acciones móviles (fijas al fondo) */}
+          <div className="flex flex-col gap-3 px-6 pb-6">
             {isAuthenticated ? (
               <>
                 <Link
@@ -162,7 +150,7 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Button
-                    variant="primary"
+                    variant="outline"
                     size="md"
                     className="w-full py-3 text-lg font-bold"
                   >
