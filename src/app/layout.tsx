@@ -56,10 +56,49 @@ const outfit = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dctrs. - Consultas médicas online",
+  title: {
+    default: "Dctrs. - Consultas médicas online",
+    template: "%s | Dctrs.",
+  },
   description:
-    "Conectamos pacientes con doctores calificados para consultas médicas rápidas y confiables.",
+    "Conectamos pacientes con doctores calificados para consultas médicas rápidas, seguras y confiables. Agenda tu cita en línea con los mejores especialistas.",
+  keywords: [
+    "consultas médicas online",
+    "doctores en línea",
+    "citas médicas",
+    "telemedicina",
+    "salud digital",
+    "Dctrs",
+    "especialistas médicos",
+    "plataforma médica",
+  ],
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  openGraph: {
+    title: "Dctrs. - Consultas médicas online",
+    description:
+      "Conectamos pacientes con doctores calificados para consultas médicas rápidas, seguras y confiables. Agenda tu cita en línea con los mejores especialistas.",
+    url: "https://dctrs.com/", // Cambia por tu dominio real si es necesario
+    siteName: "Dctrs.",
+    images: [
+      {
+        url: "/imgs/dr1.png", // Cambia por una imagen representativa
+        width: 1200,
+        height: 630,
+        alt: "Dctrs. - Consultas médicas online",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dctrs. - Consultas médicas online",
+    description:
+      "Conectamos pacientes con doctores calificados para consultas médicas rápidas, seguras y confiables. Agenda tu cita en línea con los mejores especialistas.",
+    images: ["/imgs/dr1.png"], // Cambia por una imagen representativa
+    creator: "@dctrs", // Cambia por tu usuario real si tienes
+  },
+  metadataBase: new URL("https://dctrs.com"), // Cambia por tu dominio real
 };
 
 export default function RootLayout({
