@@ -11,9 +11,9 @@ export function DctrsFeatureSection() {
               <Image
                 src="/imgs/dra1.png"
                 alt="Doctor principal Dctrs."
-                fill
-                style={{ objectFit: "cover" }}
-                className="rounded-3xl"
+                width={440} // double the max width for retina screens
+                height={550} // maintain 4:5 aspect ratio
+                className="h-full w-full rounded-3xl object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
                 priority
               />
