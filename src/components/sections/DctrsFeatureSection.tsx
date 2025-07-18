@@ -8,10 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function DctrsFeatureSection() {
-  const sectionRef = useRef(null);
-  const imageWrapperRef = useRef(null);
-  const profileCardRef = useRef(null);
-  const contentRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
+  const profileCardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,18 +67,19 @@ export function DctrsFeatureSection() {
           <div className="relative flex w-full justify-center">
             <div
               ref={imageWrapperRef}
-              className="aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-3xl bg-gray-100 shadow-lg sm:max-w-md"
+              className="relative aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-3xl bg-gray-100 shadow-lg sm:max-w-md"
             >
               <Image
                 src="/imgs/dra1.png"
                 alt="Doctor principal Dctrs."
-                width={440}
-                height={550}
-                className="h-full w-full rounded-3xl object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                fill
+                className="rounded-3xl object-cover"
+                sizes="(max-width: 640px) 100vw, 448px"
+                quality={90}
                 priority
               />
             </div>
+
             <div
               ref={profileCardRef}
               className="absolute -bottom-8 left-1/2 flex w-56 -translate-x-1/2 items-center gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3 shadow-xl sm:w-72 sm:gap-4 sm:px-6 sm:py-4"
@@ -87,9 +88,10 @@ export function DctrsFeatureSection() {
                 <Image
                   src="/imgs/dra1.png"
                   alt="Dra. María González"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 rounded-full border-2 border-white object-cover shadow"
+                  width={80}
+                  height={80}
+                  className="h-12 w-12 rounded-full border-2 border-white object-cover shadow"
+                  quality={90}
                 />
               </div>
               <div>
