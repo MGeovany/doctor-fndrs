@@ -16,17 +16,20 @@ interface UseStaggeredAnimationProps {
   delay?: number;
 }
 
-export function useStaggeredAnimation({
-  selector,
-  stagger = 0.1,
-  duration = 0.8,
-  ease = "power2.out",
-  y = 50,
-  opacity = 0,
-  scale = 1,
-  rotation = 0,
-  delay = 0,
-}: UseStaggeredAnimationProps) {
+export function useStaggeredAnimation(
+  {
+    selector,
+    stagger = 0.1,
+    duration = 0.8,
+    ease = "power2.out",
+    y = 50,
+    opacity = 0,
+    scale = 1,
+    rotation = 0,
+    delay = 0,
+  }: UseStaggeredAnimationProps,
+  deps: unknown[] = [],
+) {
   const elementsRef = useRef<Element[]>([]);
 
   useEffect(() => {
@@ -76,7 +79,18 @@ export function useStaggeredAnimation({
         }
       });
     };
-  }, [selector, stagger, duration, ease, y, opacity, scale, rotation, delay]);
+  }, [
+    selector,
+    stagger,
+    duration,
+    ease,
+    y,
+    opacity,
+    scale,
+    rotation,
+    delay,
+    ...deps,
+  ]);
 
   return elementsRef;
 }

@@ -36,7 +36,7 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
           trigger: element as Element,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none none",
         },
       });
     });
@@ -51,7 +51,7 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
           trigger: element as Element,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none none",
         },
       });
     });
@@ -66,7 +66,7 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
           trigger: element as Element,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none none",
         },
       });
     });
@@ -81,7 +81,7 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
           trigger: element as Element,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none none",
         },
       });
     });
@@ -96,7 +96,7 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
           trigger: element as Element,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none none",
         },
       });
     });

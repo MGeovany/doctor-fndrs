@@ -13,6 +13,7 @@ import {
   Monitor,
   User,
 } from "lucide-react";
+import { useStaggeredAnimation } from "@/components/ui/useStaggeredAnimation";
 
 const patientSteps = [
   {
@@ -69,6 +70,21 @@ export function HowItWorksSection() {
   const [activeTab, setActiveTab] = useState<"pacientes" | "doctores">(
     "pacientes",
   );
+
+  // Animación escalonada de las cards al cambiar de tab
+  useStaggeredAnimation(
+    {
+      selector: ".how-step-card",
+      stagger: 0.15,
+      duration: 0.7,
+      y: 40,
+      opacity: 0,
+      scale: 1,
+      rotation: 0,
+      delay: 0,
+    },
+    [activeTab],
+  );
   return (
     <section id="how-it-works" className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -106,7 +122,7 @@ export function HowItWorksSection() {
             {(activeTab === "pacientes" ? patientSteps : doctorSteps).map(
               (step, index, arr) => {
                 return (
-                  <div key={index} className="relative">
+                  <div key={index} className="how-step-card relative">
                     <Card className="h-full text-center">
                       <div className="flex flex-col items-center space-y-2">
                         <div className="relative">
