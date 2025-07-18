@@ -124,7 +124,7 @@ export function HowItWorksSection() {
                 return (
                   <div key={index} className="how-step-card relative">
                     <Card className="h-full px-4 py-6 text-center sm:px-0 sm:py-0">
-                      <div className="flex flex-col items-center space-y-3 sm:space-y-2">
+                      <div className="flex flex-col items-center space-y-3 p-4 sm:space-y-2">
                         <div className="relative">
                           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 sm:h-16 sm:w-16">
                             <step.icon className="h-7 w-7 sm:h-8 sm:w-8" />

@@ -45,7 +45,7 @@ export function DashboardSidebar({ onClose }: { onClose?: () => void }) {
       )}
 
       {/* Navigation Content */}
-      <div className="flex flex-1 flex-col overflow-y-auto">
+      <div className="flex flex-1 flex-col overflow-y-auto border-t border-gray-200">
         <nav className="flex-1 space-y-1 px-3 py-4 lg:px-3 lg:py-4">
           {navigation.map((item) => {
             const isActive = pathname === item.href;

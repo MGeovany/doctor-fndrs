@@ -14,7 +14,7 @@ export function DashboardNavbar({
   const { logout, currentDoctor } = useApp();
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur-sm">
+    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left side - Menu button and logo */}

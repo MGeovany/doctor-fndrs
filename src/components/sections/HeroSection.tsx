@@ -14,7 +14,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="relative min-h-[70vh] overflow-hidden pt-24 sm:pt-32 md:pb-4">
+      <section className="relative min-h-[70vh] overflow-hidden pt-24 sm:pt-32 md:pb-10">
         {/* Blurred SVG background */}
         <Image
           src="/background.svg"
@@ -27,12 +27,12 @@ export function HeroSection() {
           <div className="grid grid-cols-1 items-center md:gap-8 lg:grid-cols-2">
             {/* Left content */}
             <div className="space-y-6 pt-2 sm:space-y-8 sm:pt-4">
-              <div className="gsap-fade-in space-y-3 sm:space-y-4">
+              <div className="gsap-fade-in space-y-2 sm:space-y-2">
                 <h1 className="font-cal text-5xl leading-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl lg:text-7xl">
                   Consultas médicas{" "}
                   <span className="text-blue-600">rápidas y confiables</span>
                 </h1>
-                <p className="font-outfit max-w-[600px] text-base leading-relaxed text-gray-600 sm:text-xl">
+                <p className="font-outfit z-50 max-w-[700px] text-base leading-relaxed text-gray-600 sm:text-lg">
                   Conectamos pacientes con doctores calificados para consultas
                   médicas online. Obtén atención médica profesional desde la
                   comodidad de tu hogar.
@@ -72,13 +72,13 @@ export function HeroSection() {
             </div>
 
             {/* Right content - Hero image/illustration */}
-            <div className="relative mt-8 flex min-h-[320px] items-end justify-center sm:min-h-[420px] lg:static lg:mt-0 lg:block">
+            <div className="relative mt-8 flex h-[700px] items-end justify-center lg:absolute lg:right-0 lg:bottom-0 lg:mt-0 lg:block lg:items-end">
               <Image
                 src="/imgs/drs.png"
                 alt="Doctores principales"
                 width={400}
-                height={350}
-                className="relative z-0 h-auto w-[90vw] max-w-[350px] object-contain sm:max-w-[400px]"
+                height={700}
+                className="relative -z-10 h-full w-full object-contain sm:w-full"
                 priority
               />
               {/* Card review de usuario */}
