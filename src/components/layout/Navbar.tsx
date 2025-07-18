@@ -64,24 +64,24 @@ export function Navbar() {
           <div className="hidden items-center space-x-8 lg:flex">
             <Link
               href="/#doctors"
-              className="group relative font-medium text-gray-700 transition-colors hover:text-blue-600"
+              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
             >
               Doctores
-              <span className="pointer-events-none absolute top-full left-1/2 mt-1 block h-0.5 w-0 scale-0 rounded-full bg-blue-600 opacity-0 transition-all duration-200 group-hover:w-full group-hover:scale-100 group-hover:opacity-100"></span>
+              <div className="pointer-events-none absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
             </Link>
             <Link
               href="/#benefits"
-              className="group relative font-medium text-gray-700 transition-colors hover:text-blue-600"
+              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
             >
               Beneficios
-              <span className="pointer-events-none absolute top-full left-1/2 mt-1 block h-0.5 w-0 scale-0 rounded-full bg-blue-600 opacity-0 transition-all duration-200 group-hover:w-full group-hover:scale-100 group-hover:opacity-100"></span>
+              <div className="pointer-events-none absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
             </Link>
             <Link
               href="/#how-it-works"
-              className="group relative font-medium text-gray-700 transition-colors hover:text-blue-600"
+              className="group font-outfit relative text-gray-700 transition-colors hover:text-blue-600"
             >
               Cómo funciona
-              <span className="pointer-events-none absolute top-full left-1/2 mt-1 block h-0.5 w-0 scale-0 rounded-full bg-blue-600 opacity-0 transition-all duration-200 group-hover:w-full group-hover:scale-100 group-hover:opacity-100"></span>
+              <div className="pointer-events-none absolute top-full left-1/2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
             </Link>
           </div>
 
