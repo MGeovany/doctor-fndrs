@@ -5,11 +5,11 @@ import { Facebook, Twitter, Instagram } from "lucide-react";
 export function Footer() {
   return (
     <footer className="gsap-fade-in bg-black text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
           {/* Logo and description */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="mb-4 flex items-center space-x-2">
+          <div className="col-span-1 flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
+            <div className="mb-4 flex items-center justify-center space-x-2 md:justify-start">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/60 bg-black">
                 <span className="text-lg font-bold text-white">D</span>
               </div>
@@ -19,7 +19,7 @@ export function Footer() {
               Conectamos pacientes con doctores calificados para consultas
               médicas rápidas y confiables. Tu salud es nuestra prioridad.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center space-x-4 md:justify-start">
               <a
                 href="#"
                 className="text-gray-400 transition-colors hover:text-white"
@@ -45,7 +45,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <h3 className="mb-4 text-sm font-semibold tracking-wider text-gray-400 uppercase">
               Enlaces rápidos
             </h3>
@@ -86,7 +86,7 @@ export function Footer() {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <h3 className="font-outfit mb-4 text-sm font-semibold tracking-wider text-gray-400 uppercase">
               Legal
             </h3>
@@ -128,7 +128,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-gray-800 pt-8">
-          <p className="font-outfit text-center text-gray-400">
+          <p className="font-outfit text-center text-sm text-gray-400">
             © 2025 Dctrs. Todos los derechos reservados.
           </p>
         </div>

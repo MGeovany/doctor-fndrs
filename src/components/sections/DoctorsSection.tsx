@@ -104,27 +104,27 @@ export function DoctorsSection() {
   }
 
   return (
-    <section id="doctors" className="bg-gray-50 py-20">
+    <section id="doctors" className="bg-gray-50 py-12 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="gsap-fade-in mb-12 text-center">
-          <h2 className="mb-4 text-6xl font-bold text-gray-900">
+        <div className="gsap-fade-in mb-8 text-center sm:mb-12">
+          <h2 className="mb-3 text-3xl font-bold text-gray-900 sm:mb-4 sm:text-6xl">
             Nuestros Doctores Destacados
           </h2>
-          <p className="font-outfit mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="font-outfit mx-auto max-w-3xl text-base text-gray-600 sm:text-xl">
             Contamos con un equipo de profesionales altamente calificados y
             listos para atenderte.
           </p>
         </div>
 
         {/* Search and filters */}
-        <div className="gsap-slide-in-left mb-8 flex flex-col gap-4 md:flex-row">
+        <div className="gsap-slide-in-left mb-6 flex flex-col gap-3 sm:mb-8 sm:gap-4 md:flex-row">
           <div className="relative flex-1">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type="text"
-              className="font-outfit block w-full rounded-md border border-gray-300 bg-white py-2 pr-3 pl-10 leading-5 text-gray-900 placeholder-gray-500 focus:outline-none sm:text-sm"
+              className="font-outfit block w-full rounded-md border border-gray-300 bg-white py-2 pr-3 pl-10 text-sm leading-5 text-gray-900 placeholder-gray-500 focus:outline-none sm:text-base sm:text-sm"
               placeholder="Buscar por nombre o especialidad..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -133,14 +133,14 @@ export function DoctorsSection() {
 
           <div className="flex items-center space-x-2">
             <Filter className="h-5 w-5 text-gray-400" />
-            <span className="text-sm text-gray-600">Filtrar:</span>
+            <span className="text-xs text-gray-600 sm:text-sm">Filtrar:</span>
             <Select
               value={selectedSpecialty ?? "all"}
               onValueChange={(value) =>
                 setSelectedSpecialty(value === "all" ? null : value)
               }
             >
-              <SelectTrigger className="font-outfit w-[220px]">
+              <SelectTrigger className="font-outfit w-[140px] text-xs sm:w-[220px] sm:text-base">
                 <SelectValue placeholder="Todas las especialidades" />
               </SelectTrigger>
               <SelectContent>
@@ -156,15 +156,15 @@ export function DoctorsSection() {
         </div>
 
         {/* Doctors grid */}
-        <div className="gsap-scale-in grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gsap-scale-in grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredDoctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
 
         {filteredDoctors.length === 0 && (
-          <div className="py-12 text-center">
-            <p className="text-gray-600">
+          <div className="py-8 text-center sm:py-12">
+            <p className="text-sm text-gray-600 sm:text-base">
               No se encontraron doctores con los criterios de búsqueda.
             </p>
           </div>

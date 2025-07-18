@@ -57,36 +57,36 @@ const benefits = [
 
 export function BenefitsSection() {
   return (
-    <section id="benefits" className="bg-gray-50 py-20">
+    <section id="benefits" className="bg-gray-50 py-12 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="gsap-fade-in mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+        <div className="gsap-fade-in mb-8 text-center sm:mb-16">
+          <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:mb-4 sm:text-3xl">
             ¿Por qué elegir Dctrs.?
           </h2>
-          <p className="font-outfit mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="font-outfit mx-auto max-w-3xl text-base text-gray-600 sm:text-xl">
             Ofrecemos una experiencia médica moderna, segura y conveniente para
             todos nuestros pacientes.
           </p>
         </div>
 
-        <div className="gsap-scale-in grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gsap-scale-in grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
               <Card
                 key={index}
-                className="text-center transition-shadow hover:shadow-lg"
+                className="px-4 py-6 text-center transition-shadow hover:shadow-lg sm:px-0 sm:py-0"
               >
-                <div className="flex flex-col items-center space-y-4">
+                <div className="flex flex-col items-center space-y-3 sm:space-y-4">
                   <div
-                    className={`rounded-full bg-gray-100 p-3 ${benefit.color}`}
+                    className={`rounded-full bg-gray-100 p-2 sm:p-3 ${benefit.color}`}
                   >
-                    <IconComponent className="h-8 w-8" />
+                    <IconComponent className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-900 sm:text-xl">
                     {benefit.title}
                   </h3>
-                  <p className="leading-relaxed text-gray-600">
+                  <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                     {benefit.description}
                   </p>
                 </div>
@@ -96,44 +96,48 @@ export function BenefitsSection() {
         </div>
 
         {/* Additional benefits section */}
-        <div className="gsap-slide-in-right mt-16 rounded-2xl bg-white p-8 lg:p-12">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900">
+        <div className="gsap-slide-in-right mt-10 rounded-2xl bg-white p-6 sm:mt-16 sm:p-8 lg:p-12">
+          <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">
                 Suscripción Premium
               </h3>
-              <p className="text-lg text-gray-600">
+              <p className="text-base text-gray-600 sm:text-lg">
                 Obtén acceso ilimitado a consultas médicas con nuestro plan
                 premium. Ideal para familias y personas que requieren atención
                 médica frecuente.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-700">Consultas ilimitadas</span>
+                  <span className="text-sm text-gray-700 sm:text-base">
+                    Consultas ilimitadas
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-700">
+                  <span className="text-sm text-gray-700 sm:text-base">
                     Prioridad en la atención
                   </span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-700">Acceso a especialistas</span>
+                  <span className="text-sm text-gray-700 sm:text-base">
+                    Acceso a especialistas
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-700">
+                  <span className="text-sm text-gray-700 sm:text-base">
                     Seguimiento personalizado
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 text-center">
-              <div className="space-y-4">
+            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-100 p-6 text-center sm:p-8">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-baseline justify-center">
                   <StatsCounter
                     value={29}
@@ -141,18 +145,20 @@ export function BenefitsSection() {
                     suffix=".99"
                     duration={2}
                     delay={0.3}
-                    textSize="text-3xl"
+                    textSize="text-2xl sm:text-3xl"
                     textColor="text-gray-900"
                   />
-                  <span className="ml-1 text-lg font-normal text-gray-600">
+                  <span className="ml-1 text-base font-normal text-gray-600 sm:text-lg">
                     /mes
                   </span>
                 </div>
-                <p className="text-gray-600">Cancela en cualquier momento</p>
-                <button className="w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700">
+                <p className="text-sm text-gray-600 sm:text-base">
+                  Cancela en cualquier momento
+                </p>
+                <button className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 sm:px-6 sm:py-3 sm:text-base">
                   Comenzar prueba gratuita
                 </button>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs text-gray-500 sm:text-sm">
                   14 días gratis, luego $29.99/mes
                 </p>
               </div>

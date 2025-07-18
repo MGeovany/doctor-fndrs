@@ -60,19 +60,26 @@ export function StatsCards() {
   ];
 
   return (
-    <div className="gsap-scale-in grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div className="gsap-scale-in grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (
-          <Card key={index} className="transition-shadow hover:shadow-md">
+          <Card
+            key={index}
+            className="p-3 transition-shadow hover:shadow-md sm:p-4"
+          >
             <div className="flex items-center">
-              <div className={`rounded-lg p-3 ${stat.bgColor}`}>
-                <IconComponent className={`h-6 w-6 ${stat.color}`} />
+              <div className={`rounded-lg p-2 sm:p-3 ${stat.bgColor}`}>
+                <IconComponent
+                  className={`h-5 w-5 sm:h-6 sm:w-6 ${stat.color}`}
+                />
               </div>
-              <div className="ml-4">
-                <p className="font-outfit text-sm text-gray-600">{stat.name}</p>
+              <div className="ml-3 sm:ml-4">
+                <p className="font-outfit text-xs text-gray-600 sm:text-sm">
+                  {stat.name}
+                </p>
                 <div className="flex items-baseline">
-                  <p className="text-2xl font-semibold text-gray-900">
+                  <p className="text-lg font-semibold text-gray-900 sm:text-2xl">
                     {stat.value}
                   </p>
                   <p

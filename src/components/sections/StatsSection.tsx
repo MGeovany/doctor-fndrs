@@ -3,10 +3,10 @@ import { StatsCounter } from "@/components/ui/StatsCounter";
 
 export function StatsSection() {
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-white py-10 sm:py-16">
       <div className="mx-auto max-w-4xl px-4">
-        <div className="bg gsap-fade-in flex flex-col items-center rounded-2xl p-8">
-          <div className="grid w-full grid-cols-1 gap-8 text-center sm:grid-cols-3">
+        <div className="bg gsap-fade-in flex flex-col items-center rounded-2xl p-4 sm:p-8">
+          <div className="grid w-full grid-cols-1 gap-6 text-center sm:grid-cols-3 sm:gap-8">
             <StatsCounter
               value={15}
               suffix="K+"

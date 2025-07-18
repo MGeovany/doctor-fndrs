@@ -27,12 +27,100 @@ const secondaryNavigation = [
   { name: "Ayuda", href: "/dashboard/help", icon: HelpCircle },
 ];
 
-export function DashboardSidebar() {
+export function DashboardSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
-
   return (
-    <div className="hidden lg:flex lg:flex-shrink-0">
-      <div className="flex w-64 flex-col">
+    <div className="relative flex h-full flex-col">
+      {/* Botón cerrar solo en mobile */}
+      {onClose && (
+        <button
+          className="absolute top-2 right-2 z-10 flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset lg:hidden"
+          onClick={onClose}
+          aria-label="Cerrar menú"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-x"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      )}
+      <div className="hidden h-full lg:flex lg:flex-shrink-0">
+        <div className="flex h-full w-64 flex-col">
+          <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-4 pb-4">
+            <div className="flex flex-grow flex-col">
+              <nav className="flex-1 space-y-4 px-4">
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={clsx(
+                        isActive
+                          ? "border-r-2 border-blue-600 bg-blue-50 text-blue-700"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                        "group font-jakarta flex items-center rounded-l-md px-3 py-2 text-sm transition-colors",
+                      )}
+                    >
+                      <item.icon
+                        className={clsx(
+                          isActive
+                            ? "text-blue-500"
+                            : "text-gray-400 group-hover:text-gray-500",
+                          "font-jakarta mr-3 h-4 w-4 flex-shrink-0 transition-colors",
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
+            <div className="flex-shrink-0 px-4">
+              <div className="border-t border-gray-200 pt-4">
+                {secondaryNavigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={clsx(
+                        isActive
+                          ? "border-r-2 border-blue-600 bg-blue-50 text-blue-700"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                        "group flex items-center rounded-l-md px-3 py-2 text-sm font-medium transition-colors",
+                      )}
+                    >
+                      <item.icon
+                        className={clsx(
+                          isActive
+                            ? "text-blue-500"
+                            : "text-gray-400 group-hover:text-gray-500",
+                          "mr-3 h-6 w-6 flex-shrink-0 transition-colors",
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Sidebar content para mobile (igual que desktop) */}
+      <div className="flex h-full flex-col lg:hidden">
         <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-4 pb-4">
           <div className="flex flex-grow flex-col">
             <nav className="flex-1 space-y-4 px-4">
@@ -64,7 +152,6 @@ export function DashboardSidebar() {
               })}
             </nav>
           </div>
-
           <div className="flex-shrink-0 px-4">
             <div className="border-t border-gray-200 pt-4">
               {secondaryNavigation.map((item) => {

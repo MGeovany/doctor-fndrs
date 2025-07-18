@@ -77,27 +77,26 @@ export function AssignedPatients() {
   };
 
   return (
-    <Card className="gsap-slide-in-right h-fit">
+    <Card className="gsap-slide-in-right h-fit p-3 sm:p-6">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <User className="h-5 w-5 text-green-600" />
-            <span>Mis Pacientes</span>
+            <span className="text-sm sm:text-base">Mis Pacientes</span>
           </div>
           <Badge variant="success" size="sm">
             {assignedPatients.length} asignados
           </Badge>
         </CardTitle>
       </CardHeader>
-
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {assignedPatients.length === 0 ? (
-          <div className="py-8 text-center">
-            <User className="mx-auto mb-4 h-12 w-12 text-gray-400" />
-            <p className="font-outfit text-gray-600">
+          <div className="py-6 text-center sm:py-8">
+            <User className="mx-auto mb-4 h-10 w-10 text-gray-400 sm:h-12 sm:w-12" />
+            <p className="font-outfit text-sm text-gray-600 sm:text-base">
               No tienes pacientes asignados
             </p>
-            <p className="font-outfit mt-1 text-sm text-gray-500">
+            <p className="font-outfit mt-1 text-xs text-gray-500 sm:text-sm">
               Asígnate pacientes de la cola para comenzar
             </p>
           </div>
@@ -105,57 +104,52 @@ export function AssignedPatients() {
           assignedPatients.map((patient) => (
             <div
               key={patient.id}
-              className="rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md"
+              className="rounded-lg border border-gray-200 p-3 transition-all duration-200 hover:scale-[1.02] hover:bg-gray-50 hover:shadow-md sm:p-4"
             >
-              <div className="flex items-start justify-between">
-                <div className="flex items-start space-x-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-0">
+                <div className="flex items-start space-x-2 sm:space-x-3">
                   {/* Patient avatar */}
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">
-                    <span className="text-sm font-medium text-gray-600">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 sm:h-10 sm:w-10">
+                    <span className="text-xs font-medium text-gray-600 sm:text-sm">
                       {patient.name
                         .split(" ")
                         .map((n) => n[0])
                         .join("")}
                     </span>
                   </div>
-
                   <div className="flex-1">
-                    <div className="flex items-center space-x-2">
-                      <h4 className="font-medium text-gray-900">
+                    <div className="flex items-center space-x-1 sm:space-x-2">
+                      <h4 className="text-sm font-medium text-gray-900 sm:text-base">
                         {patient.name}
                       </h4>
                       <Badge variant={getStatusColor(patient.status)} size="sm">
                         {getStatusText(patient.status)}
                       </Badge>
                     </div>
-
-                    <p className="font-outfit mt-1 text-sm text-gray-600">
+                    <p className="font-outfit mt-1 text-xs text-gray-600 sm:text-sm">
                       {patient.age} años • {patient.consultation}
                     </p>
-
                     {patient.status === "assigned" && (
-                      <div className="mt-2 flex items-center space-x-1 text-xs text-gray-500">
+                      <div className="mt-1 flex items-center space-x-1 text-xs text-gray-500 sm:mt-2">
                         <Clock className="h-4 w-4" />
                         <span>Esperando consulta</span>
                       </div>
                     )}
-
                     {patient.status === "in-consultation" && (
-                      <div className="mt-2 flex items-center space-x-1 text-xs text-green-600">
+                      <div className="mt-1 flex items-center space-x-1 text-xs text-green-600 sm:mt-2">
                         <Video className="h-4 w-4" />
                         <span>En consulta activa</span>
                       </div>
                     )}
                   </div>
                 </div>
-
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-col gap-2 sm:flex-row sm:gap-2">
                   {patient.status === "assigned" && (
                     <Button
                       size="sm"
                       onClick={() => handleStartConsultation(patient.id)}
                       loading={consultingPatient === patient.id}
-                      className="flex min-w-[120px] items-center justify-center space-x-1"
+                      className="flex min-w-[100px] items-center justify-center space-x-1"
                     >
                       <Video className="h-4 w-4" />
                       <span>
@@ -165,14 +159,13 @@ export function AssignedPatients() {
                       </span>
                     </Button>
                   )}
-
                   {patient.status === "in-consultation" && (
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => handleCompleteConsultation(patient.id)}
                       loading={completingPatient === patient.id}
-                      className="flex min-w-[120px] items-center justify-center space-x-1"
+                      className="flex min-w-[100px] items-center justify-center space-x-1"
                     >
                       <CheckCircle className="h-4 w-4" />
                       <span>
@@ -182,12 +175,11 @@ export function AssignedPatients() {
                       </span>
                     </Button>
                   )}
-
                   {patient.status === "completed" && (
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="flex min-w-[120px] items-center justify-center space-x-1"
+                      className="flex min-w-[100px] items-center justify-center space-x-1"
                     >
                       <FileText className="h-4 w-4" />
                       <span>Ver notas</span>
@@ -199,9 +191,8 @@ export function AssignedPatients() {
           ))
         )}
       </div>
-
       {assignedPatients.length > 0 && (
-        <div className="mt-4 border-t border-gray-200 pt-4">
+        <div className="mt-3 border-t border-gray-200 pt-3 sm:mt-4 sm:pt-4">
           <p className="text-center text-xs text-gray-500">
             Los pacientes se ordenan por estado y tiempo de asignación
           </p>

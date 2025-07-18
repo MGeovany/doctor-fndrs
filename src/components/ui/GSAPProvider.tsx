@@ -25,6 +25,11 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
     gsap.set(".gsap-scale-in", { opacity: 0, scale: 0.8 });
     gsap.set(".gsap-rotate-in", { opacity: 0, rotation: -15 });
 
+    // Detect mobile
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+    const startValue = isMobile ? "top 97%" : "top 85%";
+    const endValue = isMobile ? "bottom 3%" : "bottom 15%";
+
     // Create scroll triggers for common animation classes
     gsap.utils.toArray(".gsap-fade-in").forEach((element) => {
       gsap.to(element as Element, {
@@ -34,8 +39,8 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: element as Element,
-          start: "top 85%",
-          end: "bottom 15%",
+          start: startValue,
+          end: endValue,
           toggleActions: "restart none none none",
         },
       });
@@ -49,8 +54,8 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: element as Element,
-          start: "top 85%",
-          end: "bottom 15%",
+          start: startValue,
+          end: endValue,
           toggleActions: "restart none none none",
         },
       });
@@ -64,8 +69,8 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: element as Element,
-          start: "top 85%",
-          end: "bottom 15%",
+          start: startValue,
+          end: endValue,
           toggleActions: "restart none none none",
         },
       });
@@ -79,8 +84,8 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: element as Element,
-          start: "top 85%",
-          end: "bottom 15%",
+          start: startValue,
+          end: endValue,
           toggleActions: "restart none none none",
         },
       });
@@ -94,8 +99,8 @@ export function GSAPProvider({ children }: GSAPProviderProps) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: element as Element,
-          start: "top 85%",
-          end: "bottom 15%",
+          start: startValue,
+          end: endValue,
           toggleActions: "restart none none none",
         },
       });

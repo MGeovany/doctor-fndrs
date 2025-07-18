@@ -14,7 +14,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="relative h-screen overflow-hidden pt-32 pb-4">
+      <section className="relative min-h-[70vh] overflow-hidden pt-24 sm:pt-32 md:pb-4">
         {/* Blurred SVG background */}
         <Image
           src="/background.svg"
@@ -24,15 +24,15 @@ export function HeroSection() {
           priority
         />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-center md:gap-8 lg:grid-cols-2">
             {/* Left content */}
-            <div className="space-y-8 pt-4">
-              <div className="gsap-fade-in space-y-4">
-                <h1 className="font-cal text-4xl leading-tight font-extrabold text-gray-900 lg:text-7xl">
+            <div className="space-y-6 pt-2 sm:space-y-8 sm:pt-4">
+              <div className="gsap-fade-in space-y-3 sm:space-y-4">
+                <h1 className="font-cal text-5xl leading-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl lg:text-7xl">
                   Consultas médicas{" "}
                   <span className="text-blue-600">rápidas y confiables</span>
                 </h1>
-                <p className="font-outfit max-w-[600px] text-xl leading-relaxed text-gray-600">
+                <p className="font-outfit max-w-[600px] text-base leading-relaxed text-gray-600 sm:text-xl">
                   Conectamos pacientes con doctores calificados para consultas
                   médicas online. Obtén atención médica profesional desde la
                   comodidad de tu hogar.
@@ -40,22 +40,27 @@ export function HeroSection() {
               </div>
 
               {/* Features list */}
-              <div className="gsap-slide-in-left space-y-3">
+              <div className="gsap-slide-in-left space-y-2 sm:space-y-3">
                 {[
                   "Doctores certificados y especializados",
                   "Consultas disponibles 24/7",
                   "Respuesta en menos de 15 minutos",
                   "Historial médico seguro y privado",
                 ].map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-3">
+                  <div
+                    key={index}
+                    className="flex items-center space-x-2 sm:space-x-3"
+                  >
                     <Check className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span className="font-outfit text-gray-700">{feature}</span>
+                    <span className="font-outfit text-sm text-gray-700 sm:text-base">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
 
               {/* CTA buttons */}
-              <div className="gsap-scale-in flex flex-col gap-4 sm:flex-row">
+              <div className="gsap-scale-in flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <Button size="md" onClick={handleConsultationClick}>
                   Haz tu consulta ahora
                 </Button>
@@ -67,67 +72,71 @@ export function HeroSection() {
             </div>
 
             {/* Right content - Hero image/illustration */}
-            <div className="gsap-slide-in-right absolute right-0 bottom-0 min-h-[520px]">
+            <div className="relative mt-8 flex min-h-[320px] items-end justify-center sm:min-h-[420px] lg:static lg:mt-0 lg:block">
               <Image
                 src="/imgs/drs.png"
                 alt="Doctores principales"
-                width={900}
-                height={700}
-                className="absolute right-10 bottom-0 z-0 h-auto w-[700px] max-w-none object-contain"
+                width={400}
+                height={350}
+                className="relative z-0 h-auto w-[90vw] max-w-[350px] object-contain sm:max-w-[400px]"
                 priority
               />
               {/* Card review de usuario */}
-              <div className="gsap-rotate-in absolute right-[35rem] bottom-[8rem] z-10 flex w-[200px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+              <div className="gsap-rotate-in absolute bottom-24 left-2 z-10 flex w-[140px] items-center gap-2 rounded-xl bg-white px-2 py-2 shadow-lg sm:bottom-28 sm:left-8 sm:w-[200px] sm:px-4 sm:py-3 lg:right-[35rem] lg:bottom-[8rem] lg:left-auto lg:w-[200px]">
                 <Image
                   src="/imgs/dra1.png"
                   alt="María González"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 rounded-full border-2 border-white object-cover shadow"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-full border-2 border-white object-cover shadow sm:h-10 sm:w-10"
                 />
                 <div>
                   <div className="flex items-center gap-1">
-                    <span className="text-sm leading-tight font-bold text-gray-900">
+                    <span className="text-xs leading-tight font-bold text-gray-900 sm:text-sm">
                       200+
                     </span>
-                    <span className="font-outfit text-xs text-gray-500">
+                    <span className="font-outfit text-[10px] text-gray-500 sm:text-xs">
                       Best Doctor
                     </span>
                   </div>
                   <div className="mt-1 flex items-center gap-1">
-                    <span className="font-jakarta text-xs text-gray-700">
+                    <span className="font-jakarta text-[10px] text-gray-700 sm:text-xs">
                       María González
                     </span>
                   </div>
                 </div>
               </div>
               {/* Card review de doctor */}
-              <div className="gsap-rotate-in absolute right-10 bottom-16 z-10 flex w-[400px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+              <div className="gsap-rotate-in absolute right-2 bottom-2 z-10 flex w-[220px] items-center gap-2 rounded-xl bg-white px-2 py-2 shadow-lg sm:right-8 sm:bottom-8 sm:w-[320px] sm:px-4 sm:py-3 lg:right-10 lg:bottom-16 lg:w-[400px]">
                 <Image
                   src="/imgs/dr1.1.png"
                   alt="Josh"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 rounded-full border-2 border-white object-cover shadow"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-full border-2 border-white object-cover shadow sm:h-10 sm:w-10"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-1">
-                    <span className="font-jakarta text-sm leading-tight font-bold text-gray-900">
+                    <span className="font-jakarta text-xs leading-tight font-bold text-gray-900 sm:text-sm">
                       Josh
                     </span>
                     <Star className="ml-1 h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-xs text-gray-700">4.8</span>
+                    <span className="text-[10px] text-gray-700 sm:text-xs">
+                      4.8
+                    </span>
                   </div>
-                  <div className="font-outfit text-xs text-gray-500">
+                  <div className="font-outfit text-[10px] text-gray-500 sm:text-xs">
                     Specialist ENT
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <div className="mb-2 flex flex-row items-center justify-center gap-1">
+                  <div className="mb-1 flex flex-row items-center justify-center gap-1 sm:mb-2">
                     <span className="h-2 w-2 rounded-full bg-green-500" />
-                    <span className="text-xs font-semibold">Available now</span>
+                    <span className="text-[10px] font-semibold sm:text-xs">
+                      Available now
+                    </span>
                   </div>
-                  <button className="rounded border border-blue-600 px-2 py-1 text-xs text-blue-600 transition hover:bg-blue-50">
+                  <button className="rounded border border-blue-600 px-1 py-0.5 text-[10px] text-blue-600 transition hover:bg-blue-50 sm:px-2 sm:py-1 sm:text-xs">
                     Book Appointment
                   </button>
                 </div>
