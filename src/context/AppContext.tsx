@@ -1,7 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useReducer, useEffect } from "react";
-import { AppContextType, AppState, Patient, Doctor } from "@/types";
+import React, { createContext, useContext, useReducer } from "react";
+import type { AppContextType, AppState, Patient, Doctor } from "@/types";
 import { mockDoctors, mockPatients, defaultDoctor } from "@/data/mockData";
 
 const initialState: AppState = {
