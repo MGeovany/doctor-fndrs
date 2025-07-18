@@ -26,7 +26,7 @@ export function StatsCards() {
       value: waitingPatients,
       icon: Users,
       color: "text-blue-600",
-      bgColor: "bg-blue-100",
+      bgColor: "bg-blue-50",
       change: "+5%",
       changeType: "increase",
     },
@@ -35,7 +35,7 @@ export function StatsCards() {
       value: averageWaitTime,
       icon: Clock,
       color: "text-yellow-600",
-      bgColor: "bg-yellow-100",
+      bgColor: "bg-yellow-50",
       change: "-2 min",
       changeType: "decrease",
     },
@@ -44,7 +44,7 @@ export function StatsCards() {
       value: inConsultationPatients,
       icon: TrendingUp,
       color: "text-purple-600",
-      bgColor: "bg-purple-100",
+      bgColor: "bg-purple-50",
       change: "+2",
       changeType: "increase",
     },
@@ -53,44 +53,46 @@ export function StatsCards() {
       value: completedPatients,
       icon: CheckCircle,
       color: "text-green-600",
-      bgColor: "bg-green-100",
+      bgColor: "bg-green-50",
       change: "+12%",
       changeType: "increase",
     },
   ];
 
   return (
-    <div className="gsap-scale-in grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div className="gsap-scale-in grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (
           <Card
             key={index}
-            className="p-3 transition-shadow hover:shadow-md sm:p-4"
+            className="group rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-gray-300 hover:shadow-md sm:p-5"
           >
-            <div className="flex items-center">
-              <div className={`rounded-lg p-2 sm:p-3 ${stat.bgColor}`}>
+            <div className="flex items-start space-x-4">
+              <div
+                className={`rounded-lg p-2.5 ${stat.bgColor} transition-transform duration-200 group-hover:scale-105`}
+              >
                 <IconComponent
-                  className={`h-5 w-5 sm:h-6 sm:w-6 ${stat.color}`}
+                  className={`h-5 w-5 ${stat.color} sm:h-6 sm:w-6`}
                 />
               </div>
-              <div className="ml-3 sm:ml-4">
-                <p className="font-outfit text-xs text-gray-600 sm:text-sm">
+              <div className="min-w-0 flex-1">
+                <p className="font-outfit mb-1 text-sm text-gray-600">
                   {stat.name}
                 </p>
-                <div className="flex items-baseline">
-                  <p className="text-lg font-semibold text-gray-900 sm:text-2xl">
+                <div className="flex items-baseline space-x-2">
+                  <p className="text-xl font-bold text-gray-900 sm:text-2xl">
                     {stat.value}
                   </p>
-                  <p
-                    className={`ml-2 text-xs ${
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 text-xs font-medium ${
                       stat.changeType === "increase"
-                        ? "text-green-600"
-                        : "text-red-600"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-red-100 text-red-700"
                     }`}
                   >
                     {stat.change}
-                  </p>
+                  </span>
                 </div>
               </div>
             </div>

@@ -25,51 +25,57 @@ export function DashboardHeader() {
   };
 
   return (
-    <div className="gsap-fade-in rounded-lg border border-gray-200 bg-white p-4 sm:p-6">
-      <div className="flex flex-col gap-4 sm:gap-0 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center space-x-3 sm:space-x-4">
+    <div className="gsap-fade-in rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        {/* Doctor info section */}
+        <div className="flex items-center space-x-4">
           {/* Doctor avatar */}
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black sm:h-16 sm:w-16">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black shadow-sm sm:h-16 sm:w-16">
             <span className="text-lg font-bold text-white sm:text-xl">
               {currentDoctor?.name
-                .split(" ")
+                ?.split(" ")
                 .map((n) => n[0])
-                .join("")}
+                .join("")
+                .toUpperCase() ?? "DR"}
             </span>
           </div>
-          {/* Doctor info */}
-          <div>
-            <h1 className="font-sans text-lg text-gray-900 sm:text-2xl">
-              {getCurrentGreeting()}, {currentDoctor?.name}
+
+          {/* Doctor details */}
+          <div className="flex-1">
+            <h1 className="font-sans text-lg font-semibold text-gray-900 sm:text-2xl">
+              {getCurrentGreeting()}, Dr. {currentDoctor?.name}
             </h1>
-            <p className="font-outfit text-xs text-black/80 sm:text-base">
+            <p className="font-outfit text-sm text-gray-600 sm:text-base">
               {getCurrentDate()}
             </p>
-            <div className="mt-1 flex items-center space-x-1 sm:mt-2 sm:space-x-2">
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <Badge variant="success" size="sm">
                 En línea
               </Badge>
-              <span className="font-outfit text-xs text-gray-500 sm:text-sm">
+              <span className="font-outfit text-sm text-gray-500">
                 {currentDoctor?.specialty}
               </span>
             </div>
           </div>
         </div>
-        {/* Doctor stats */}
-        <div className="gsap-scale-in mt-4 grid grid-cols-2 gap-2 text-center sm:mt-0 sm:grid-cols-2 sm:gap-4 md:mt-0">
-          <div className="rounded-lg bg-blue-50 p-2 sm:p-3">
-            <div className="text-lg font-bold text-blue-600 sm:text-2xl">
-              <AnimatedCounter value={currentDoctor?.patientsAttended ?? 0} />
+
+        {/* Stats cards */}
+        <div className="gsap-scale-in grid grid-cols-2 gap-3 sm:gap-4 lg:flex-shrink-0">
+          <div className="rounded-lg bg-blue-50 p-3 sm:p-4">
+            <div className="text-xl font-bold text-blue-600 sm:text-2xl">
+              <AnimatedCounter
+                value={currentDoctor?.patientsAttended ?? 1543}
+              />
             </div>
-            <div className="font-outfit text-xs text-gray-600">
+            <div className="font-outfit text-xs text-gray-600 sm:text-sm">
               Pacientes atendidos
             </div>
           </div>
-          <div className="rounded-lg bg-green-50 p-2 sm:p-3">
-            <div className="text-lg font-bold text-green-600 sm:text-2xl">
-              {currentDoctor?.rating ?? 0}
+          <div className="rounded-lg bg-green-50 p-3 sm:p-4">
+            <div className="text-xl font-bold text-green-600 sm:text-2xl">
+              {currentDoctor?.rating ?? 4.9}
             </div>
-            <div className="font-outfit text-xs text-gray-600">
+            <div className="font-outfit text-xs text-gray-600 sm:text-sm">
               Calificación promedio
             </div>
           </div>

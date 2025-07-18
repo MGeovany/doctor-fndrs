@@ -12,6 +12,7 @@ import {
   FileText,
   Settings,
   HelpCircle,
+  X,
 } from "lucide-react";
 
 const navigation = [
@@ -34,23 +35,11 @@ export function DashboardSidebar({ onClose }: { onClose?: () => void }) {
       {/* Botón cerrar solo en mobile */}
       {onClose && (
         <button
-          className="absolute top-2 right-2 z-10 flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset lg:hidden"
+          className="absolute top-4 right-4 z-10 flex items-center justify-center rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none lg:hidden"
           onClick={onClose}
           aria-label="Cerrar menú"
         >
-          <svg
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-x"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
+          <X className="h-5 w-5" />
         </button>
       )}
       <div className="hidden h-full lg:flex lg:flex-shrink-0">

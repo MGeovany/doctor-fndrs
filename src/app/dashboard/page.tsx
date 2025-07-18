@@ -14,11 +14,11 @@ export default function DashboardPage() {
     <PageTransition>
       <ProtectedRoute>
         <DashboardLayout>
-          <div className="space-y-6">
+          <div className="space-y-6 lg:space-y-8">
             <DashboardHeader />
             <StatsCards />
 
-            <div className="grid grid-cols-1 gap-4 sm:gap-6 xl:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
               <PatientsQueue />
               <AssignedPatients />
             </div>
