@@ -96,7 +96,7 @@ export function BenefitsSection() {
         </div>
 
         {/* Additional benefits section */}
-        <div className="gsap-slide-in-right mt-10 rounded-2xl bg-white p-6 sm:mt-16 sm:p-8 lg:p-12">
+        <div className="mt-10 rounded-2xl bg-white p-6 sm:mt-16 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2">
             <div className="space-y-4 sm:space-y-6">
               <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">

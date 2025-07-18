@@ -146,7 +146,7 @@ export function HowItWorksSection() {
         </div>
 
         {/* Doctor CTA section */}
-        <div className="gsap-slide-in-right rounded-2xl bg-blue-600 p-6 text-center text-white sm:p-8 lg:p-12">
+        <div className="rounded-2xl bg-blue-600 p-6 text-center text-white sm:p-8 lg:p-12">
           <div className="mx-auto max-w-3xl space-y-4 sm:space-y-6">
             <h3 className="text-xl font-bold sm:text-2xl lg:text-3xl">
               ¿Eres doctor y quieres unirte a nuestra plataforma?
