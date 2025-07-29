@@ -43,7 +43,7 @@ export function DashboardHeader() {
           {/* Doctor details */}
           <div className="flex-1">
             <h1 className="font-sans text-lg font-semibold text-gray-900 sm:text-2xl">
-              {getCurrentGreeting()}, Dr. {currentDoctor?.name}
+              {getCurrentGreeting()}, {currentDoctor?.name}
             </h1>
             <p className="font-outfit text-sm text-gray-600 sm:text-base">
               {getCurrentDate()}
